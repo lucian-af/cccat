@@ -1,13 +1,15 @@
-namespace Cccat.Refactoring.Test
+using Cccat.Refactoring.ObjetoEstudoRefatorado;
+
+namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
 {
     public class MainTest
     {
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormal()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-11 20:00:00"
@@ -22,9 +24,9 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormalDomingo()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-09 20:00:00"
@@ -39,9 +41,9 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturno()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-11 23:15:00"
@@ -56,9 +58,9 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturnoDomingo()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-09 23:15:00"
@@ -73,9 +75,9 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveRetornarMenosDoisSeDataInvalida()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "abc"
@@ -88,11 +90,11 @@ namespace Cccat.Refactoring.Test
         }
 
         [Fact]
-        public void DeveRetornarMenosUmSeDistanciaanciaInvalida()
+        public void DeveRetornarMenosUmSeDistanciaInvalida()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "-10",
                     DataHora = "2023-04-11 20:00:00"
@@ -107,9 +109,9 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveRetornarValorMinimoCorridaSeValorCalculadoMenorQueDez()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "1",
                     DataHora = "2023-04-11 20:00:00"
@@ -124,14 +126,14 @@ namespace Cccat.Refactoring.Test
         [Fact]
         public void DeveCalcularMaisDeUmaCorrida()
         {
-            var corridas = new List<Corrida>
+            var corridas = new List<Parametros>
             {
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-11 20:00:00"
                 },
-                new Corrida
+                new Parametros
                 {
                     Distancia = "10",
                     DataHora = "2023-04-10 20:00:00"

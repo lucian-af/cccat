@@ -1,9 +1,9 @@
-﻿namespace Cccat.Refactoring.Exemplo
+﻿namespace Cccat.Refactoring.ObjetoEstudo
 {
     public static class Main
     {
         // calcular corrida
-        public static decimal CalcularCorrida(List<Corrida> lista)
+        public static decimal CalcularCorrida(List<LsParams> lista)
         {
             var result = 0M;
             foreach (var item in lista)
@@ -61,7 +61,7 @@
         }
     }
 
-    public class Corrida
+    public class LsParams
     {
         public string Dist { get; set; }
 

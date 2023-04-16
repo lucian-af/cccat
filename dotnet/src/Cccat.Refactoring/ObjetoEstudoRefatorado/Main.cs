@@ -1,4 +1,4 @@
-﻿namespace Cccat.Refactoring
+﻿namespace Cccat.Refactoring.ObjetoEstudoRefatorado
 {
     public static class Main
     {
@@ -30,15 +30,15 @@
             return false;
         }
 
-        public static decimal CalcularCorrida(List<Corrida> corridas)
+        public static decimal CalcularCorrida(List<Parametros> parametros)
         {
             var valorTotalCorridas = 0M;
-            foreach (var corrida in corridas)
+            foreach (var parametro in parametros)
             {
-                if (!DistanciaValida(corrida.Distancia, out var distancia))
+                if (!DistanciaValida(parametro.Distancia, out var distancia))
                     throw new ArgumentException("Distância inválida.");
 
-                if (!DataHoraValida(corrida.DataHora, out var dataHora))
+                if (!DataHoraValida(parametro.DataHora, out var dataHora))
                     throw new ArgumentException("DataHora inválida.");
 
                 if (PeriodoNoturno(dataHora) && !EhDomingo(dataHora))
@@ -58,7 +58,7 @@
         }
     }
 
-    public class Corrida
+    public class Parametros
     {
         public string Distancia { get; set; }
 
