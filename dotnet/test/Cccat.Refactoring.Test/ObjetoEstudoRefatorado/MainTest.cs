@@ -4,6 +4,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
 {
     public class MainTest
     {
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormal()
         {
@@ -21,6 +22,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal(21, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormalDomingo()
         {
@@ -38,6 +40,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal(29, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturno()
         {
@@ -55,6 +58,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal(39, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturnoDomingo()
         {
@@ -72,6 +76,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal(50, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarMenosDoisSeDataInvalida()
         {
@@ -89,6 +94,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal("DataHora inválida.", exception.Message);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarMenosUmSeDistanciaInvalida()
         {
@@ -106,6 +112,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal("Distância inválida.", exception.Message);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarValorMinimoCorridaSeValorCalculadoMenorQueDez()
         {
@@ -123,6 +130,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal(10, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalcularMaisDeUmaCorrida()
         {

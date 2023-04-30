@@ -4,6 +4,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
 {
     public class SegmentoTest
     {
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarExceptionSeDataInvalida()
         {
@@ -15,6 +16,7 @@ namespace Cccat.Refactoring.Test.ObjetoEstudoRefatorado
             Assert.Equal("Data hora inválida.", exception.Message);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarExceptionSeDistanciaInvalida()
         {

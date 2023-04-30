@@ -1,15 +1,20 @@
+using Cccat.API.Helpers;
+using Cccat.Application;
+using Cccat.Infra.Configurations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDatabaseConfiguration(""); // add connectionString
+builder.Services.AddScoped<Checkout>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.ExecutarSeedDados().Wait();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

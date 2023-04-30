@@ -1,9 +1,10 @@
-using Cccat.API.Helpers;
+using Cccat.Application.Helpers;
 
-namespace Cccat.API.Test.HelpersTest
+namespace Cccat.Tests.Validates
 {
     public class ValidarCpfTest
     {
+        [Trait("Cccat", "Core")]
         [Theory]
         [InlineData("407.302.170-27")]
         [InlineData("684.053.160-00")]
@@ -15,6 +16,7 @@ namespace Cccat.API.Test.HelpersTest
             Assert.True(result);
         }
 
+        [Trait("Cccat", "Core")]
         [Theory]
         [InlineData("406.302.170-27")]
         [InlineData("684.053.160")]

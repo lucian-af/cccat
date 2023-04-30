@@ -1,0 +1,32 @@
+﻿using Cccat.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Cccat.Infra.Mapping
+{
+    public class CupomMapping : IEntityTypeConfiguration<Cupom>
+    {
+        public void Configure(EntityTypeBuilder<Cupom> builder)
+        {
+            builder
+                .ToTable("CUPOM")
+                .HasKey(pr => pr.Id);
+
+            builder
+                .Property(pr => pr.Codigo)
+                .HasColumnType("VARCHAR(100)")
+                .IsRequired();
+
+            builder
+                .Property(pr => pr.Percentual)
+                .HasColumnType("DECIMAL(14,2)")
+                .HasDefaultValue(0)
+                .IsRequired();
+
+            builder
+                .Property(pr => pr.Validade)
+                .HasColumnType("DATETIME")
+                .IsRequired();
+        }
+    }
+}

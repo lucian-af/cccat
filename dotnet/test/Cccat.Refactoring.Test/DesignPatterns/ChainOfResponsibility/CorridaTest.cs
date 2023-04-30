@@ -17,6 +17,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             _corrida = new CoR.Corrida(tarifaNormalHanlder);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormal()
         {
@@ -27,6 +28,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             Assert.Equal(21, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNormalDomingo()
         {
@@ -37,6 +39,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             Assert.Equal(29, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturnoExcetoDomingo()
         {
@@ -47,6 +50,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             Assert.Equal(39, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalulcarValorCorridaHorarioNoturnoDomingo()
         {
@@ -57,6 +61,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             Assert.Equal(50, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveRetornarValorMinimoCorridaSeValorCalculadoMenorQueDez()
         {
@@ -67,6 +72,7 @@ namespace Cccat.Refactoring.Test.DesignPatterns.ChainOfResponsibility
             Assert.Equal(10, result);
         }
 
+        [Trait("Cccat", "Refactoring")]
         [Fact]
         public void DeveCalcularMaisDeUmaCorrida()
         {

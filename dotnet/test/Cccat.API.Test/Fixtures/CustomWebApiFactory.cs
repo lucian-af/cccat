@@ -1,10 +1,10 @@
-﻿using Cccat.API.Infra;
+﻿using Cccat.Infra;
+using Cccat.Infra.Configurations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Cccat.API.Test
+namespace Cccat.API.Test.Fixtures
 {
     public class CustomWebApiFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {
@@ -17,10 +17,7 @@ namespace Cccat.API.Test
 
                 services.Remove(descriptor);
 
-                services.AddDbContext<DatabaseContext>(options =>
-                {
-                    options.UseInMemoryDatabase("CCCAT");
-                });
+                services.AddDatabaseConfiguration(string.Empty, useInMemory: true);
             });
 
             builder.UseEnvironment("Development");
