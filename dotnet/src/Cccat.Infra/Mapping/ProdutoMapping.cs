@@ -13,6 +13,12 @@ namespace Cccat.Infra.Mapping
                 .HasKey(pr => pr.Id);
 
             builder
+                .Property(pr => pr.Id)
+                .HasColumnType("INTEGER")
+                .IsRequired()
+                .ValueGeneratedNever();
+
+            builder
                 .Property(pr => pr.Descricao)
                 .HasColumnType("VARCHAR(255)")
                 .IsRequired();

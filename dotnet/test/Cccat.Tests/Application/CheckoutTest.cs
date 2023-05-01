@@ -1,8 +1,5 @@
 ﻿using Cccat.Application;
-using Cccat.Infra;
-using Cccat.Infra.Seed;
 using Cccat.Tests.Fixtures;
-using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Tests.Application
 {
@@ -15,11 +12,10 @@ namespace Cccat.Tests.Application
         public CheckoutTest(CheckoutFixture checkoutFixture)
         {
             _checkoutFixture = checkoutFixture;
-            var dbOptions = new DbContextOptionsBuilder();
-            dbOptions.UseInMemoryDatabase("CCCAT");
-            var dbContext = new DatabaseContext(dbOptions.Options);
-            SeedData.CriarDados(dbContext).Wait();
-            _checkout = new Checkout(dbContext);
+            _checkoutFixture.CriarDatabaseInMemory();
+            var produtoRepository = _checkoutFixture.CriarProdutoRepository(false);
+            var cupomRepository = _checkoutFixture.CriarCupomRepository(false);
+            _checkout = new Checkout(cupomRepository, produtoRepository);
         }
 
         [Trait("Cccat", "Application")]
@@ -160,6 +156,20 @@ namespace Cccat.Tests.Application
 
             Assert.NotNull(output);
             Assert.Equal("Produto inválido.", output.Message);
+        }
+
+        [Trait("Cccat", "Application")]
+        [Fact]
+        public void NaoDeveCriarPedidoSeProdutoInexistente()
+        {
+            var payload = _checkoutFixture.CriarInputValidoSomenteItens();
+            payload.Items.Clear();
+            payload.Items.Add(new() { IdProduto = 999, Quantidade = 1 });
+
+            var output = Assert.Throws<Exception>(() => _checkout.Execute(payload));
+
+            Assert.NotNull(output);
+            Assert.Equal("Produto não encontrado.", output.Message);
         }
     }
 }

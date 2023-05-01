@@ -1,16 +1,19 @@
 ﻿using Cccat.Application.Helpers;
-using Cccat.Infra;
+using Cccat.Domain.Interfaces;
 
 namespace Cccat.Application
 {
     public class Checkout
     {
-        // TODO: separar nova camada
-        private readonly DatabaseContext _context;
+        private readonly IProdutoRepository _produtoRepository;
+        private readonly ICupomRepository _cupomRepository;
 
-        public Checkout(DatabaseContext context)
+        public Checkout(
+            ICupomRepository cupomRepository,
+            IProdutoRepository produtoRepository)
         {
-            _context = context;
+            _cupomRepository = cupomRepository;
+            _produtoRepository = produtoRepository;
         }
 
         public Output Execute(Input input)
@@ -31,33 +34,28 @@ namespace Cccat.Application
                     if (item.Quantidade <= 0)
                         throw new Exception("Quantidade do item inválida.");
 
-                    var produto = _context.Produtos
-                        .FirstOrDefault(produto => produto.Id == item.IdProduto);
+                    var produto = _produtoRepository.Get(item.IdProduto)
+                        ?? throw new Exception("Produto não encontrado.");
 
+                    if (produto.Largura <= 0 || produto.Altura <= 0 || produto.Profundidade <= 0 || produto.Peso <= 0)
+                        throw new Exception("Produto inválido.");
 
-                    if (produto != null)
+                    subTotal += produto.Preco * item.Quantidade;
+
+                    if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
                     {
-                        if (produto.Largura <= 0 || produto.Altura <= 0 || produto.Profundidade <= 0 || produto.Peso <= 0)
-                            throw new Exception("Produto inválido.");
-
-                        subTotal += produto.Preco * item.Quantidade;
-
-                        if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
-                        {
-                            var volume = produto.Largura / 100 * produto.Altura / 100 * produto.Profundidade / 100;
-                            var densidade = produto.Peso / volume;
-                            var freteCalculado = volume * 1000 * (densidade / 100);
-                            freteCalculado = Math.Max(10, freteCalculado);
-                            frete += decimal.Truncate(freteCalculado * item.Quantidade);
-                        }
+                        var volume = produto.Largura / 100 * produto.Altura / 100 * produto.Profundidade / 100;
+                        var densidade = produto.Peso / volume;
+                        var freteCalculado = volume * 1000 * (densidade / 100);
+                        freteCalculado = Math.Max(10, freteCalculado);
+                        frete += decimal.Truncate(freteCalculado * item.Quantidade);
                     }
                 }
 
                 decimal total = subTotal;
                 if (!string.IsNullOrWhiteSpace(input.Cupom))
                 {
-                    var cupom = _context.Cupons
-                        .FirstOrDefault(cp => cp.Codigo.Equals(input.Cupom));
+                    var cupom = _cupomRepository.Get(input.Cupom);
 
                     if (cupom is not null && cupom.Validade >= DateTime.Now)
                         total -= total * cupom.Percentual / 100;

@@ -1,12 +1,16 @@
 using Cccat.API.Helpers;
 using Cccat.Application;
+using Cccat.Domain.Interfaces;
 using Cccat.Infra.Configurations;
+using Cccat.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDatabaseConfiguration(""); // add connectionString
+builder.Services.AddDatabaseConfiguration(Environment.GetEnvironmentVariable("Conexao"));
 builder.Services.AddScoped<Checkout>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<ICupomRepository, CupomRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -8,9 +8,13 @@ namespace Cccat.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Cupom> builder)
         {
+            builder.ToTable("CUPOM");
+
             builder
-                .ToTable("CUPOM")
-                .HasKey(pr => pr.Id);
+                .Property(pr => pr.Id)
+                .HasColumnType("INTEGER")
+                .IsRequired()
+                .ValueGeneratedNever();
 
             builder
                 .Property(pr => pr.Codigo)

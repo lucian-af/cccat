@@ -199,5 +199,23 @@ namespace Cccat.API.Test
             var result = await response.Content.ReadAsStringAsync();
             Assert.Equal("Produto inválido.", result);
         }
+
+        [Trait("Cccat", "API")]
+        [Theory]
+        [InlineData("/checkout")]
+        public async Task POST_NaoDeveCriarPedidoSeProdutoInexistente(string pathUrl)
+        {
+            var client = _pedidoFixture.Client;
+
+            var payload = _pedidoFixture.CriarInputValidoSomenteItens();
+            payload.Items.Clear();
+            payload.Items.Add(new() { IdProduto = 999, Quantidade = 1 });
+
+            var response = await client.PostAsJsonAsync(pathUrl, payload);
+
+            Assert.False(response.IsSuccessStatusCode);
+            var result = await response.Content.ReadAsStringAsync();
+            Assert.Equal("Produto não encontrado.", result);
+        }
     }
 }
