@@ -1,4 +1,4 @@
-﻿namespace Cccat.Domain.Entities
+﻿namespace Cccat.Entities.Negocio
 {
     public class Cupom
     {

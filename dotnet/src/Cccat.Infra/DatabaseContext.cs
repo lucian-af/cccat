@@ -1,4 +1,4 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Entities.Negocio;
 using Cccat.Infra.Configurations;
 using Microsoft.EntityFrameworkCore;
 

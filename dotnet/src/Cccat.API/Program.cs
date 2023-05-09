@@ -1,8 +1,8 @@
 using Cccat.API.Helpers;
-using Cccat.Application;
-using Cccat.Domain.Interfaces;
+using Cccat.Entities.Interfaces;
 using Cccat.Infra.Configurations;
 using Cccat.Infra.Repositories;
+using Cccat.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 

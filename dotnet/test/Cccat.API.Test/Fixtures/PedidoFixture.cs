@@ -1,4 +1,4 @@
-﻿using Cccat.Application;
+﻿using Cccat.UseCases;
 
 namespace Cccat.API.Test.Fixtures
 {

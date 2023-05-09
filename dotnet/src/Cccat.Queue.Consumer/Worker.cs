@@ -1,4 +1,4 @@
-using Cccat.Application;
+using Cccat.UseCases;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;

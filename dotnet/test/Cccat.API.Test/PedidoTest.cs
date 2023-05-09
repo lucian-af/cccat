@@ -1,5 +1,5 @@
 ﻿using Cccat.API.Test.Fixtures;
-using Cccat.Application;
+using Cccat.UseCases;
 using System.Net.Http.Json;
 
 namespace Cccat.API.Test

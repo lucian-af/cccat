@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Cccat.Application\Cccat.Application.csproj" />
+	  <ProjectReference Include="..\Cccat.Infra\Cccat.Infra.csproj" />
+	  <ProjectReference Include="..\Cccat.UseCases\Cccat.UseCases.csproj" />
 	</ItemGroup>
 </Project>

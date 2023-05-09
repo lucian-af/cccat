@@ -1,6 +1,6 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Entities.Negocio;
 
-namespace Cccat.Domain.Interfaces
+namespace Cccat.Entities.Interfaces
 {
     public interface IProdutoRepository
     {

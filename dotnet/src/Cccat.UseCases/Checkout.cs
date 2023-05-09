@@ -1,7 +1,7 @@
 ﻿using Cccat.Application.Helpers;
-using Cccat.Domain.Interfaces;
+using Cccat.Entities.Interfaces;
 
-namespace Cccat.Application
+namespace Cccat.UseCases
 {
     public class Checkout
     {
@@ -44,9 +44,7 @@ namespace Cccat.Application
 
                     if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
                     {
-                        var volume = produto.Largura / 100 * produto.Altura / 100 * produto.Profundidade / 100;
-                        var densidade = produto.Peso / volume;
-                        var freteCalculado = volume * 1000 * (densidade / 100);
+                        var freteCalculado = produto.Volume() * 1000 * (produto.Densidade() / 100);
                         freteCalculado = Math.Max(10, freteCalculado);
                         frete += decimal.Truncate(freteCalculado * item.Quantidade);
                     }

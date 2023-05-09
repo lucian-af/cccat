@@ -1,4 +1,4 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Entities.Negocio;
 
 namespace Cccat.Infra.Seed
 {

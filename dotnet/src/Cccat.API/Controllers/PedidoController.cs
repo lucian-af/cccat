@@ -1,4 +1,4 @@
-using Cccat.Application;
+using Cccat.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cccat.API.Controllers

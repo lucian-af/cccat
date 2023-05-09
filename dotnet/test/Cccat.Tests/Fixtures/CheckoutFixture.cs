@@ -1,9 +1,9 @@
-﻿using Cccat.Application;
-using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
+﻿using Cccat.Entities.Interfaces;
+using Cccat.Entities.Negocio;
 using Cccat.Infra;
 using Cccat.Infra.Repositories;
 using Cccat.Infra.Seed;
+using Cccat.UseCases;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Tests.Fixtures

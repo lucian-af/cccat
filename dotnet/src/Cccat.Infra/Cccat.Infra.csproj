@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Cccat.Domain\Cccat.Domain.csproj" />
+	  <ProjectReference Include="..\Cccat.Entities\Cccat.Entities.csproj" />
 	</ItemGroup>
 
 </Project>
