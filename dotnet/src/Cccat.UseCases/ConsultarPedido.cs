@@ -1,4 +1,5 @@
-﻿using Cccat.Entities.Interfaces;
+﻿using Cccat.Entities;
+using Cccat.Entities.Interfaces;
 
 namespace Cccat.UseCases
 {
@@ -8,5 +9,8 @@ namespace Cccat.UseCases
 
         public ConsultarPedido(IPedidoRepository pedidoRepository)
             => _pedidoRepository = pedidoRepository;
+
+        public Pedido Executar(Guid idPedido)
+            => (Pedido)_pedidoRepository.ConsultarPedidoPorId(idPedido);
     }
 }

@@ -9,6 +9,8 @@ namespace Cccat.Infra.Configurations
         {
             modelBuilder.ApplyConfiguration(new ProdutoMapping());
             modelBuilder.ApplyConfiguration(new CupomMapping());
+            modelBuilder.ApplyConfiguration(new PedidoMapping());
+            modelBuilder.ApplyConfiguration(new PedidoItemMapping());
         }
     }
 }

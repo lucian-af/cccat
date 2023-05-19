@@ -22,9 +22,7 @@ namespace Cccat.Infra.Configurations
                 }
                 else
                 {
-                    opt.UseSqlServer(
-                        connectionString,
-                        options => options.EnableRetryOnFailure(3));
+                    opt.UseSqlServer(connectionString);
                 }
 
             }, serviceLifetime);

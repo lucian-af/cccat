@@ -1,5 +1,5 @@
-﻿using Cccat.Entities.Interfaces;
-using Cccat.Entities.Negocio;
+﻿using Cccat.Entities;
+using Cccat.Entities.Interfaces;
 
 namespace Cccat.Infra.Repositories
 {

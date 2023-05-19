@@ -1,4 +1,4 @@
-﻿using Cccat.Entities.Negocio;
+﻿using Cccat.Entities;
 using Cccat.Infra.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +8,8 @@ namespace Cccat.Infra
     {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cupom> Cupons { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<PedidoItem> PedidoItens { get; set; }
 
         public DatabaseContext(DbContextOptions options) : base(options) { }
 

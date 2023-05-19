@@ -1,4 +1,4 @@
-﻿using Cccat.UseCases;
+﻿using Cccat.UseCases.Models;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
@@ -23,7 +23,7 @@ _channel.QueueBind(_queue, _exchange, _queue);
 do
 {
     Console.WriteLine("Criando payload...");
-    var pedido = new Input
+    var pedido = new CheckoutInputDto
     {
         Cpf = "407.302.170-27",
         Items = new()

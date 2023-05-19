@@ -1,4 +1,4 @@
-﻿using Cccat.UseCases;
+﻿using Cccat.UseCases.Models;
 
 namespace Cccat.API.Test.Fixtures
 {
@@ -16,11 +16,11 @@ namespace Cccat.API.Test.Fixtures
             Client = _factory.CreateClient();
         }
 
-        public Input CriarInputValido()
+        public CheckoutInputDto CriarInputValido()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -34,11 +34,11 @@ namespace Cccat.API.Test.Fixtures
             };
         }
 
-        public Input CriarInputValidoSemCupomDesconto()
+        public CheckoutInputDto CriarInputValidoSemCupomDesconto()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -51,11 +51,11 @@ namespace Cccat.API.Test.Fixtures
             };
         }
 
-        public Input CriarInputValidoSemFrete()
+        public CheckoutInputDto CriarInputValidoSemFrete()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -67,11 +67,11 @@ namespace Cccat.API.Test.Fixtures
             };
         }
 
-        public Input CriarInputValidoSomenteItens()
+        public CheckoutInputDto CriarInputValidoSomenteItens()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -82,11 +82,11 @@ namespace Cccat.API.Test.Fixtures
             };
         }
 
-        public Input CriarInputValidoComCupom()
+        public CheckoutInputDto CriarInputValidoComCupom()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -98,11 +98,11 @@ namespace Cccat.API.Test.Fixtures
             };
         }
 
-        public Input CriarInputValidoComFrete()
+        public CheckoutInputDto CriarInputValidoComFrete()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {

@@ -1,4 +1,5 @@
 using Cccat.UseCases;
+using Cccat.UseCases.Models;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -48,12 +49,12 @@ namespace Cccat.Queue.Consumer
             {
                 var contentArray = eventArgs.Body.ToArray();
                 var contentString = Encoding.UTF8.GetString(contentArray);
-                var mensagem = JsonSerializer.Deserialize<Input>(contentString);
+                var mensagem = JsonSerializer.Deserialize<CheckoutInputDto>(contentString);
                 _logger.LogInformation($"mensagem recebida: {JsonSerializer.Serialize(mensagem)}");
 
                 try
                 {
-                    var result = _checkout.Execute(mensagem);
+                    var result = _checkout.Executar(mensagem);
                     _logger.LogInformation($"output: {JsonSerializer.Serialize(result)}");
                 }
                 catch (Exception ex)

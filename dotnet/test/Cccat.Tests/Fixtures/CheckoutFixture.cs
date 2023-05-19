@@ -1,25 +1,23 @@
-﻿using Cccat.Entities.Interfaces;
-using Cccat.Entities.Negocio;
+﻿using Cccat.Entities;
+using Cccat.Entities.Interfaces;
 using Cccat.Infra;
 using Cccat.Infra.Repositories;
-using Cccat.Infra.Seed;
-using Cccat.UseCases;
-using Microsoft.EntityFrameworkCore;
+using Cccat.UseCases.Models;
 
 namespace Cccat.Tests.Fixtures
 {
-    [CollectionDefinition(nameof(CheckoutFixtureCollection))]
-    public class CheckoutFixtureCollection : ICollectionFixture<CheckoutFixture> { }
-
     public class CheckoutFixture
     {
-        private DatabaseContext _dbContext;
+        private readonly DatabaseContext _dbContext;
 
-        public Input CriarInputValido()
+        public CheckoutFixture(DatabaseContext dbContext)
+            => _dbContext = dbContext;
+
+        public CheckoutInputDto CriarInputValido()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -33,11 +31,11 @@ namespace Cccat.Tests.Fixtures
             };
         }
 
-        public Input CriarInputValidoSemCupomDesconto()
+        public CheckoutInputDto CriarInputValidoSemCupomDesconto()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -50,11 +48,11 @@ namespace Cccat.Tests.Fixtures
             };
         }
 
-        public Input CriarInputValidoSemFrete()
+        public CheckoutInputDto CriarInputValidoSemFrete()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -66,11 +64,11 @@ namespace Cccat.Tests.Fixtures
             };
         }
 
-        public Input CriarInputValidoSomenteItens()
+        public CheckoutInputDto CriarInputValidoSomenteItens()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -81,11 +79,11 @@ namespace Cccat.Tests.Fixtures
             };
         }
 
-        public Input CriarInputValidoComCupom()
+        public CheckoutInputDto CriarInputValidoComCupom()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -97,11 +95,11 @@ namespace Cccat.Tests.Fixtures
             };
         }
 
-        public Input CriarInputValidoComFrete()
+        public CheckoutInputDto CriarInputValidoComFrete()
         {
-            // TODO: usar Fakers
-            return new Input
+            return new CheckoutInputDto
             {
+                IdPedido = Guid.NewGuid(),
                 Cpf = "407.302.170-27",
                 Items = new()
                 {
@@ -130,79 +128,36 @@ namespace Cccat.Tests.Fixtures
             return new CupomRepository(_dbContext);
         }
 
-        public void CriarDatabaseInMemory()
+        public IPedidoRepository CriarPedidoRepository(bool fake = true)
         {
-            var dbOptions = new DbContextOptionsBuilder();
-            dbOptions.UseInMemoryDatabase("CCCAT");
-            _dbContext = new DatabaseContext(dbOptions.Options);
-            SeedData.CriarDados(_dbContext).Wait();
+            if (fake)
+                return new PedidoRepositoryFake();
+
+            return new PedidoRepository(_dbContext);
         }
-    }
 
-    internal class ProdutoRepositoryFake : IProdutoRepository
-    {
-        private static List<Produto> Produtos()
-            => new()
-            {
-                new Produto
-                {
-                    Id = 1,
-                    Descricao = "A",
-                    Preco = 1000,
-                    Largura = 100,
-                    Altura = 30,
-                    Profundidade = 10,
-                    Peso = 3
-                },
-                new Produto
-                {
-                    Id = 2,
-                    Descricao = "B",
-                    Preco = 5000,
-                    Largura = 50,
-                    Altura = 50,
-                    Profundidade = 50,
-                    Peso = 22
-                },
-                new Produto
-                {
-                    Id = 3,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = 10,
-                    Altura = 10,
-                    Profundidade = 10,
-                    Peso = 0.9M
-                },
-                new Produto
-                {
-                    Id = 4,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = -1,
-                    Altura = -1,
-                    Profundidade = -1,
-                    Peso = 1M
-                },
-                new Produto
-                {
-                    Id = 5,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = 1,
-                    Altura = 1,
-                    Profundidade = 1,
-                    Peso = -1M
-                }
-            };
+        public void DeletarTodosPedidos()
+            => _dbContext.RemoveRange(_dbContext.Pedidos);
 
-        public Produto Get(int idProduto)
-            => Produtos().Find(produto => produto.Id == idProduto);
-    }
+        internal class ProdutoRepositoryFake : IProdutoRepository
+        {
+            private static List<Produto> Produtos()
+                => new()
+                {
+                    new Produto(1,"A",1000,100,30,10,3),
+                    new Produto(2,"B",5000,50,50,50,22),
+                    new Produto(3,"C",30,10,10,10,.9m),
+                    new Produto(4,"D",30,-1,-1,-1,1),
+                    new Produto(5,"E",30,1,1,1,-1)
+                };
 
-    internal class CupomRepositoryFake : ICupomRepository
-    {
-        private static List<Cupom> Cupons() => new()
+            public Produto Get(int idProduto)
+                => Produtos().Find(produto => produto.Id == idProduto);
+        }
+
+        internal class CupomRepositoryFake : ICupomRepository
+        {
+            private static List<Cupom> Cupons() => new()
         {
             new Cupom
                 {
@@ -220,7 +175,29 @@ namespace Cccat.Tests.Fixtures
                 },
         };
 
-        public Cupom Get(string codigo)
-            => Cupons().Find(cupom => cupom.Codigo.Equals(codigo));
+            public Cupom Get(string codigo)
+                => Cupons().Find(cupom => cupom.Codigo.Equals(codigo));
+        }
+
+        internal class PedidoRepositoryFake : IPedidoRepository
+        {
+            public Pedido ConsultarPedidoPorId(Guid idPedido)
+                => new()
+                {
+                    Id = idPedido,
+                    Cpf = "407.302.170-27",
+                    Frete = 0,
+                    Total = 6090
+                };
+
+            public Task AdicionarPedido(Pedido pedido)
+            {
+                Console.WriteLine("Fake.");
+                return Task.CompletedTask;
+            }
+
+            public async Task<long> ObterTotalPedidos()
+                => await Task.FromResult(0);
+        }
     }
 }

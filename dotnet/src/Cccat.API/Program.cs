@@ -11,16 +11,17 @@ builder.Services.AddDatabaseConfiguration(Environment.GetEnvironmentVariable("Co
 builder.Services.AddScoped<Checkout>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ICupomRepository, CupomRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-app.ExecutarSeedDados().Wait();
 
 if (app.Environment.IsDevelopment())
 {
+    app.ExecutarSeedDados().Wait();
     app.UseSwagger();
     app.UseSwaggerUI();
 }

@@ -1,4 +1,5 @@
 using Cccat.UseCases;
+using Cccat.UseCases.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cccat.API.Controllers
@@ -13,11 +14,11 @@ namespace Cccat.API.Controllers
             => _checkout = checkout;
 
         [HttpPost(Name = "CriarPedido")]
-        public IActionResult CriarPedido(Input request)
+        public async Task<ActionResult<CheckoutOutputDto>> CriarPedido(CheckoutInputDto request)
         {
             try
             {
-                var response = _checkout.Execute(request);
+                var response = await _checkout.Executar(request);
                 return Ok(response);
             }
             catch (Exception ex)

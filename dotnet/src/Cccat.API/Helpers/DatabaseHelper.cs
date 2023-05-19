@@ -15,13 +15,10 @@ namespace Cccat.API.Helpers
 
         public static async Task ExecutarSeedDados(this IApplicationBuilder app)
         {
-            var serviceProvider = app.ApplicationServices;
-            using var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var environment = serviceScope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
-
+            using var serviceScope = app.ApplicationServices.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
 
-            if (environment.IsDevelopment())
+            if (!dbContext.Database.GetMigrations().Any())
                 await dbContext.Database.EnsureCreatedAsync();
 
             ExecutarMigrations(dbContext);

@@ -1,4 +1,4 @@
-﻿using Cccat.Entities.Negocio;
+﻿using Cccat.Entities;
 
 namespace Cccat.Infra.Seed
 {
@@ -19,56 +19,11 @@ namespace Cccat.Infra.Seed
 
             var produtos = new List<Produto>
             {
-                new Produto
-                {
-                    Id = 1,
-                    Descricao = "A",
-                    Preco = 1000,
-                    Largura = 100,
-                    Altura = 30,
-                    Profundidade = 10,
-                    Peso = 3
-                },
-                new Produto
-                {
-                    Id = 2,
-                    Descricao = "B",
-                    Preco = 5000,
-                    Largura = 50,
-                    Altura = 50,
-                    Profundidade = 50,
-                    Peso = 22
-                },
-                new Produto
-                {
-                    Id = 3,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = 10,
-                    Altura = 10,
-                    Profundidade = 10,
-                    Peso = 0.9M
-                },
-                new Produto
-                {
-                    Id = 4,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = -1,
-                    Altura = -1,
-                    Profundidade = -1,
-                    Peso = 1M
-                },
-                new Produto
-                {
-                    Id = 5,
-                    Descricao = "C",
-                    Preco = 30,
-                    Largura = 1,
-                    Altura = 1,
-                    Profundidade = 1,
-                    Peso = -1M
-                }
+                new Produto(1,"A",1000,100,30,10,3),
+                new Produto(2,"B",5000,50,50,50,22),
+                new Produto(3,"C",30,10,10,10,.9m),
+                new Produto(4,"D",30,-1,-1,-1,1),
+                new Produto(5,"E",30,1,1,1,-1)
             };
 
             await context.Produtos.AddRangeAsync(produtos);
