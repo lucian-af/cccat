@@ -158,22 +158,10 @@ namespace Cccat.Tests.Fixtures
         internal class CupomRepositoryFake : ICupomRepository
         {
             private static List<Cupom> Cupons() => new()
-        {
-            new Cupom
-                {
-                    Id = 1,
-                    Codigo = "VALE20",
-                    Percentual = 20,
-                    Validade = DateTime.Today.AddDays(20)
-                },
-                new Cupom
-                {
-                    Id = 2,
-                    Codigo = "VALE50",
-                    Percentual = 50,
-                    Validade = DateTime.Today.AddDays(-10)
-                },
-        };
+            {
+                new Cupom(1, "VALE20", 20, DateTime.Today.AddDays(20)),
+                new Cupom(2, "VALE50", 50, DateTime.Today.AddDays(-10))
+            };
 
             public Cupom Get(string codigo)
                 => Cupons().Find(cupom => cupom.Codigo.Equals(codigo));
@@ -182,13 +170,13 @@ namespace Cccat.Tests.Fixtures
         internal class PedidoRepositoryFake : IPedidoRepository
         {
             public Pedido ConsultarPedidoPorId(Guid idPedido)
-                => new()
-                {
-                    Id = idPedido,
-                    Cpf = "407.302.170-27",
-                    Frete = 0,
-                    Total = 6090
-                };
+            {
+                var pedido = new Pedido(idPedido, "407.302.170-27");
+                pedido.AdicionarItem(1, 1000, 1);
+                pedido.AdicionarItem(2, 5000, 1);
+                pedido.AdicionarItem(3, 30, 3);
+                return pedido;
+            }
 
             public Task AdicionarPedido(Pedido pedido)
             {
@@ -198,6 +186,12 @@ namespace Cccat.Tests.Fixtures
 
             public async Task<long> ObterTotalPedidos()
                 => await Task.FromResult(0);
+
+            public Pedido ConsultarPedidoPorCodigo(string codigo)
+                => throw new NotImplementedException();
+
+            public IEnumerable<Pedido> ConsultaTodos()
+                => throw new NotImplementedException();
         }
     }
 }

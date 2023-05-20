@@ -4,6 +4,10 @@
     {
         public Pedido ConsultarPedidoPorId(Guid idPedido);
 
+        public Pedido ConsultarPedidoPorCodigo(string codigo);
+
+        public IEnumerable<Pedido> ConsultaTodos();
+
         public Task<long> ObterTotalPedidos();
 
         public Task AdicionarPedido(Pedido pedido);

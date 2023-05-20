@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Infra.Repositories
 {
-    public class PedidoRepository : IPedidoRepository, IDisposable
+    public class PedidoRepository : IPedidoRepository
     {
         private readonly DatabaseContext _context;
 
@@ -14,6 +14,12 @@ namespace Cccat.Infra.Repositories
         public Pedido ConsultarPedidoPorId(Guid idPedido)
             => _context.Pedidos.Find(idPedido);
 
+        public Pedido ConsultarPedidoPorCodigo(string codigo)
+            => _context.Pedidos.FirstOrDefault(pedido => pedido.Codigo.Equals(codigo));
+
+        public IEnumerable<Pedido> ConsultaTodos()
+            => _context.Pedidos.AsNoTracking().AsEnumerable();
+
         public async Task<long> ObterTotalPedidos()
             => await _context.Pedidos.CountAsync();
 
@@ -22,17 +28,5 @@ namespace Cccat.Infra.Repositories
             _context.Pedidos.Add(pedido);
             await _context.SaveChangesAsync();
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-            => _context.Dispose();
-
-        ~PedidoRepository()
-            => Dispose(false);
     }
 }

@@ -31,6 +31,12 @@ namespace Cccat.Infra.Mapping
                 .Property(pr => pr.Validade)
                 .HasColumnType("DATETIME")
                 .IsRequired();
+
+            builder
+                .HasMany<Pedido>()
+                .WithOne(pr => pr.Cupom)
+                .HasForeignKey("IdCupom")
+                .IsRequired(false);
         }
     }
 }

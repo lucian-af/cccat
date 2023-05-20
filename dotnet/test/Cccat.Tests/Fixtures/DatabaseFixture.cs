@@ -7,7 +7,7 @@ namespace Cccat.Tests.Fixtures
     [CollectionDefinition(nameof(DatabaseFixtureCollection))]
     public class DatabaseFixtureCollection : ICollectionFixture<DatabaseFixture> { }
 
-    public class DatabaseFixture
+    public class DatabaseFixture : IDisposable
     {
         public readonly DatabaseContext DbContext;
 
@@ -22,5 +22,20 @@ namespace Cccat.Tests.Fixtures
             SeedData.CriarDados(dbContext).Wait();
             return dbContext;
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            DbContext.Database.EnsureDeletedAsync().Wait();
+            DbContext.Dispose();
+        }
+
+        ~DatabaseFixture()
+            => Dispose(false);
     }
 }

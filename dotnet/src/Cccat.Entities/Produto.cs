@@ -12,6 +12,12 @@
 
         public Produto(int id, string descricao, decimal preco, decimal largura, decimal altura, decimal profundidade, decimal peso)
         {
+            if (largura <= 0 || altura <= 0 || profundidade <= 0)
+                throw new Exception("Dimensões do produto inválidas.");
+
+            if (peso <= 0)
+                throw new Exception("Peso do produto inválido.");
+
             Id = id;
             Descricao = descricao;
             Preco = preco;

@@ -22,7 +22,7 @@ namespace Cccat.UseCases
                 {
                     var produto = _produtoRepository.Get(item.IdProduto);
                     var freteCalculado = CalculadoraFrete.Calcular(produto);
-                    frete += decimal.Truncate(freteCalculado * item.Quantidade);
+                    frete += freteCalculado * item.Quantidade;
                 }
             });
 

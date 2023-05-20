@@ -13,12 +13,12 @@ namespace Cccat.Infra.Mapping
                 .HasKey(pdi => pdi.Id);
 
             builder
-                .Property(pr => pr.Valor)
+                .Property(pr => pr.Preco)
                 .HasColumnType("MONEY")
                 .IsRequired();
 
             builder
-                .ToTable(t => t.HasCheckConstraint("Ck_Valor", $"{nameof(PedidoItem.Valor)} > 0"));
+                .ToTable(t => t.HasCheckConstraint("Ck_Valor", $"{nameof(PedidoItem.Preco)} > 0"));
 
             builder
                 .Property(pr => pr.Quantidade)

@@ -22,8 +22,15 @@ namespace Cccat.Infra.Mapping
                 .IsRequired();
 
             builder
-                .Property(pr => pr.Cpf)
+                .OwnsOne(pr => pr.Cpf)
+                .Property(cpf => cpf.Valor)
+                .HasColumnName("Cpf")
                 .HasColumnType("VARCHAR(11)")
+                .IsRequired();
+
+            builder
+                .Property(pr => pr.SubTotal)
+                .HasColumnType("MONEY")
                 .IsRequired();
 
             builder
