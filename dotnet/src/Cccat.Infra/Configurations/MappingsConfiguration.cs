@@ -11,6 +11,7 @@ namespace Cccat.Infra.Configurations
             modelBuilder.ApplyConfiguration(new CupomMapping());
             modelBuilder.ApplyConfiguration(new PedidoMapping());
             modelBuilder.ApplyConfiguration(new PedidoItemMapping());
+            modelBuilder.ApplyConfiguration(new CepMapping());
         }
     }
 }

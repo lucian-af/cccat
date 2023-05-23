@@ -10,6 +10,7 @@ namespace Cccat.Infra
         public DbSet<Cupom> Cupons { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoItem> PedidoItens { get; set; }
+        public DbSet<Cep> Ceps { get; set; }
 
         public DatabaseContext(DbContextOptions options) : base(options) { }
 

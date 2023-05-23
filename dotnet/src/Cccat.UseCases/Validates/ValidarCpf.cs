@@ -2,7 +2,6 @@
 
 namespace Cccat.Application.Helpers
 {
-    // TODO: mover para outra camada
     public static partial class ValidarCpf
     {
         private static bool SomenteNumerosInteiros(string cpf)
