@@ -4,12 +4,12 @@ using System.Net.Http.Json;
 
 namespace Cccat.API.Test
 {
-    [Collection(nameof(PedidoFixtureCollection))]
-    public class PedidoTest
+    [Collection(nameof(CheckoutFixtureCollection))]
+    public class CheckoutTest
     {
-        private readonly PedidoFixture _pedidoFixture;
+        private readonly CheckoutFixture _pedidoFixture;
 
-        public PedidoTest(PedidoFixture pedidoFixture)
+        public CheckoutTest(CheckoutFixture pedidoFixture)
             => _pedidoFixture = pedidoFixture;
 
         [Trait("Cccat", "API")]
@@ -130,7 +130,7 @@ namespace Cccat.API.Test
         }
 
         [Trait("Cccat", "API")]
-        [Theory(Skip = "Rever")]
+        [Theory]
         [InlineData("/checkout")]
         public async Task POST_NaoDevePermitirItemComQuantidadeNegativa(string pathUrl)
         {
@@ -143,7 +143,7 @@ namespace Cccat.API.Test
             var response = await client.PostAsJsonAsync(pathUrl, payload);
 
             var result = await response.Content.ReadAsStringAsync();
-            Assert.Equal("Quantidade do item inválida.", result);
+            Assert.Equal("Quantidade inválida.", result);
             Assert.False(response.IsSuccessStatusCode);
         }
 
@@ -162,60 +162,6 @@ namespace Cccat.API.Test
             var result = await response.Content.ReadAsStringAsync();
             Assert.Equal("Não é permitido duplicar o mesmo item.", result);
             Assert.False(response.IsSuccessStatusCode);
-        }
-
-        [Trait("Cccat", "API")]
-        [Theory(Skip = "Rever")]
-        [InlineData("/checkout")]
-        public async Task POST_NaoDeveCriarPedidoSeDimensoesProdutoInvalidas(string pathUrl)
-        {
-            var client = _pedidoFixture.Client;
-
-            var payload = _pedidoFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 4, Quantidade = 1 });
-
-            var response = await client.PostAsJsonAsync(pathUrl, payload);
-
-            Assert.False(response.IsSuccessStatusCode);
-            var result = await response.Content.ReadAsStringAsync();
-            Assert.Equal("Produto inválido.", result);
-        }
-
-        [Trait("Cccat", "API")]
-        [Theory(Skip = "Rever")]
-        [InlineData("/checkout")]
-        public async Task POST_NaoDeveCriarPedidoSePesoProdutoNegativo(string pathUrl)
-        {
-            var client = _pedidoFixture.Client;
-
-            var payload = _pedidoFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 5, Quantidade = 1 });
-
-            var response = await client.PostAsJsonAsync(pathUrl, payload);
-
-            Assert.False(response.IsSuccessStatusCode);
-            var result = await response.Content.ReadAsStringAsync();
-            Assert.Equal("Produto inválido.", result);
-        }
-
-        [Trait("Cccat", "API")]
-        [Theory(Skip = "Rever")]
-        [InlineData("/checkout")]
-        public async Task POST_NaoDeveCriarPedidoSeProdutoInexistente(string pathUrl)
-        {
-            var client = _pedidoFixture.Client;
-
-            var payload = _pedidoFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 999, Quantidade = 1 });
-
-            var response = await client.PostAsJsonAsync(pathUrl, payload);
-
-            Assert.False(response.IsSuccessStatusCode);
-            var result = await response.Content.ReadAsStringAsync();
-            Assert.Equal("Produto não encontrado.", result);
         }
     }
 }

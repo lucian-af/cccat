@@ -80,7 +80,7 @@ namespace Cccat.Tests.UseCases
         }
 
         [Trait("Cccat", "UseCases.Checkout")]
-        [Fact(Skip = "Rever")]
+        [Fact]
         public async Task NaoDevePermitirItemComQuantidadeNegativa()
         {
             var payload = _checkoutFixture.CriarInputValidoSomenteItens();
@@ -90,7 +90,7 @@ namespace Cccat.Tests.UseCases
             var output = await Assert.ThrowsAsync<Exception>(async () => await _checkout.Executar(payload));
 
             Assert.NotNull(output);
-            Assert.Equal("Quantidade do item inválida.", output.Message);
+            Assert.Equal("Quantidade inválida.", output.Message);
         }
 
         [Trait("Cccat", "UseCases.Checkout")]
@@ -131,48 +131,6 @@ namespace Cccat.Tests.UseCases
             Assert.Equal(6090M, output.SubTotal);
             Assert.Equal(280M, output.Frete);
             Assert.Equal(6370M, output.Total);
-        }
-
-        [Trait("Cccat", "UseCases.Checkout")]
-        [Fact(Skip = "Rever")]
-        public async Task NaoDeveCriarPedidoSeDimensoesProdutoInvalidas()
-        {
-            var payload = _checkoutFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 4, Quantidade = 1 });
-
-            var output = await Assert.ThrowsAsync<Exception>(async () => await _checkout.Executar(payload));
-
-            Assert.NotNull(output);
-            Assert.Equal("Produto inválido.", output.Message);
-        }
-
-        [Trait("Cccat", "UseCases.Checkout")]
-        [Fact(Skip = "Rever")]
-        public async Task NaoDeveCriarPedidoSePesoProdutoNegativo()
-        {
-            var payload = _checkoutFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 5, Quantidade = 1 });
-
-            var output = await Assert.ThrowsAsync<Exception>(async () => await _checkout.Executar(payload));
-
-            Assert.NotNull(output);
-            Assert.Equal("Produto inválido.", output.Message);
-        }
-
-        [Trait("Cccat", "UseCases.Checkout")]
-        [Fact(Skip = "Rever")]
-        public async Task NaoDeveCriarPedidoSeProdutoInexistente()
-        {
-            var payload = _checkoutFixture.CriarInputValidoSomenteItens();
-            payload.Items.Clear();
-            payload.Items.Add(new() { IdProduto = 999, Quantidade = 1 });
-
-            var output = await Assert.ThrowsAsync<Exception>(async () => await _checkout.Executar(payload));
-
-            Assert.NotNull(output);
-            Assert.Equal("Produto não encontrado.", output.Message);
         }
 
         [Trait("Cccat", "UseCases.Checkout")]

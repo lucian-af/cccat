@@ -2,15 +2,15 @@
 
 namespace Cccat.API.Test.Fixtures
 {
-    [CollectionDefinition(nameof(PedidoFixtureCollection))]
-    public class PedidoFixtureCollection : ICollectionFixture<PedidoFixture> { }
+    [CollectionDefinition(nameof(CheckoutFixtureCollection))]
+    public class CheckoutFixtureCollection : ICollectionFixture<CheckoutFixture> { }
 
-    public class PedidoFixture
+    public class CheckoutFixture
     {
         public readonly HttpClient Client;
         private readonly CustomWebApiFactory<Program> _factory;
 
-        public PedidoFixture()
+        public CheckoutFixture()
         {
             _factory = new CustomWebApiFactory<Program>();
             Client = _factory.CreateClient();

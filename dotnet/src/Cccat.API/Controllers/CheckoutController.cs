@@ -6,14 +6,14 @@ namespace Cccat.API.Controllers
 {
     [ApiController]
     [Route("checkout")]
-    public class PedidoController : ControllerBase
+    public class CheckoutController : ControllerBase
     {
         private readonly Checkout _checkout;
 
-        public PedidoController(Checkout checkout)
+        public CheckoutController(Checkout checkout)
             => _checkout = checkout;
 
-        [HttpPost(Name = "CriarPedido")]
+        [HttpPost]
         public async Task<ActionResult<CheckoutOutputDto>> CriarPedido(CheckoutInputDto request)
         {
             try
