@@ -1,26 +1,30 @@
 ﻿using Cccat.Tests.Fixtures;
 using Cccat.UseCases;
+using Cccat.UseCases.Models;
 
 namespace Cccat.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CalculaDistanciaTest
     {
-        private readonly CalculaDistanciaFixture _calculaDistanciaFixture;
         private readonly CalculaDistancia _calculaDistancia;
 
         public CalculaDistanciaTest(DatabaseFixture dbFixture)
         {
-            _calculaDistanciaFixture = new(dbFixture.DbContext);
-            var cepRepository = _calculaDistanciaFixture.CriarCepRepository(false);
-            _calculaDistancia = new CalculaDistancia(cepRepository);
+            var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
+                .CriarRepositoryFactory();
+            _calculaDistancia = new CalculaDistancia(factory);
         }
 
         [Trait("Cccat", "UseCases.CalculaDistancia")]
         [Fact]
         public void DeveCalcularDistancia()
         {
-            var input = _calculaDistanciaFixture.CriarInputValido();
+            var input = new CalculaDistanciaInputDto
+            {
+                CepOrigem = "17600090",
+                CepDestino = "72980000"
+            };
 
             var output = _calculaDistancia.Calcular(input);
 

@@ -1,5 +1,6 @@
 ﻿using Cccat.Entities;
 using Cccat.Entities.Interfaces;
+using Cccat.Infra.Repositories;
 using Cccat.UseCases.Models;
 
 namespace Cccat.UseCases
@@ -8,8 +9,8 @@ namespace Cccat.UseCases
     {
         private readonly ICepRepository _cepRepository;
 
-        public CalculaDistancia(ICepRepository cepRepository)
-            => _cepRepository = cepRepository;
+        public CalculaDistancia(IRepositoryFactory repositoryFactory)
+            => _cepRepository = repositoryFactory.CriarCepRepository();
 
         public CalculaDistanciaOutputDto Calcular(CalculaDistanciaInputDto input)
         {

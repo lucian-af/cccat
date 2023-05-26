@@ -6,14 +6,13 @@ namespace Cccat.Tests.UseCases
     [Collection(nameof(DatabaseFixtureCollection))]
     public class ValidaCupomTest
     {
-        private readonly ValidaCupomFixture _validaCupomFixture;
         private readonly ValidaCupom _validaCupom;
 
         public ValidaCupomTest(DatabaseFixture dbFixture)
         {
-            _validaCupomFixture = new(dbFixture.DbContext);
-            var cupomRepository = _validaCupomFixture.CriarCupomRepository(false);
-            _validaCupom = new(cupomRepository);
+            var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
+                .CriarRepositoryFactory();
+            _validaCupom = new(factory);
         }
 
         [Trait("Cccat", "UseCases.ValidaCupom")]

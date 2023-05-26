@@ -9,14 +9,14 @@ namespace Cccat.Tests.UseCases
     public class ConsultaPedidoTest
     {
         private readonly ConsultaPedido _consultaPedido;
-        private IPedidoRepository _pedidoRepository;
-        private readonly ConsultaPedidoFixture _consultaPedidoFixture;
+        private readonly IPedidoRepository _pedidoRepository;
 
         public ConsultaPedidoTest(DatabaseFixture dbFixture)
         {
-            _consultaPedidoFixture = new(dbFixture.DbContext);
-            _pedidoRepository = _consultaPedidoFixture.CriarPedidoRepository(false);
-            _consultaPedido = new(_pedidoRepository);
+            var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
+                .CriarRepositoryFactory();
+            _pedidoRepository = factory.CriarPedidoRepository();
+            _consultaPedido = new(factory);
         }
 
         [Trait("Cccat", "UseCases.ConsultaPedido")]

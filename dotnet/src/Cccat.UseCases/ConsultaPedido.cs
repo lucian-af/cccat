@@ -1,5 +1,6 @@
 ﻿using Cccat.Entities;
 using Cccat.Entities.Interfaces;
+using Cccat.Infra.Repositories;
 
 namespace Cccat.UseCases
 {
@@ -7,8 +8,8 @@ namespace Cccat.UseCases
     {
         private readonly IPedidoRepository _pedidoRepository;
 
-        public ConsultaPedido(IPedidoRepository pedidoRepository)
-            => _pedidoRepository = pedidoRepository;
+        public ConsultaPedido(IRepositoryFactory repositoryFactory)
+            => _pedidoRepository = repositoryFactory.CriarPedidoRepository();
 
         public Pedido ConsultaPorId(Guid idPedido)
             => _pedidoRepository.ConsultarPedidoPorId(idPedido);

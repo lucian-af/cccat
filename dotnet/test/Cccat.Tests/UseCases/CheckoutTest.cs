@@ -7,18 +7,18 @@ namespace Cccat.Tests.UseCases
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CheckoutTest
     {
+        private readonly DatabaseRepositoryFactoryFixture _databaseRepositoryFactory;
         private readonly CheckoutFixture _checkoutFixture;
         private readonly Checkout _checkout;
         private readonly ConsultaPedido _consultarPedido;
 
         public CheckoutTest(DatabaseFixture dbFixture)
         {
-            _checkoutFixture = new(dbFixture.DbContext);
-            var produtoRepository = _checkoutFixture.CriarProdutoRepository(false);
-            var cupomRepository = _checkoutFixture.CriarCupomRepository(false);
-            var pedidoRepository = _checkoutFixture.CriarPedidoRepository(false);
-            _checkout = new Checkout(cupomRepository, produtoRepository, pedidoRepository);
-            _consultarPedido = new ConsultaPedido(pedidoRepository);
+            _databaseRepositoryFactory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext);
+            var factory = _databaseRepositoryFactory.CriarRepositoryFactory();
+            _checkoutFixture = new();
+            _checkout = new Checkout(factory);
+            _consultarPedido = new ConsultaPedido(factory);
         }
 
         [Trait("Cccat", "UseCases.Checkout")]
@@ -154,7 +154,7 @@ namespace Cccat.Tests.UseCases
         {
             var payload = _checkoutFixture.CriarInputValidoSomenteItens();
 
-            _checkoutFixture.DeletarTodosPedidos();
+            _databaseRepositoryFactory.DeletarTodosPedidos();
 
             payload.IdPedido = Guid.NewGuid();
             await _checkout.Executar(payload);

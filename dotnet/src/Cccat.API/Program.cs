@@ -12,6 +12,7 @@ builder.Services.AddScoped<Checkout>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ICupomRepository, CupomRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<IRepositoryFactory, DatabaseRepositoryFactory>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

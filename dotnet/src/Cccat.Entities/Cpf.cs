@@ -10,19 +10,17 @@ namespace Cccat.Entities
 
         public Cpf(string cpf)
         {
-            cpf = new Regex("\\D").Replace(cpf, "");
-
             if (!Validar(cpf))
                 throw new Exception("Cpf inválido.");
 
-            Valor = cpf;
+            Valor = RemoverCaracteresEspeciais(cpf);
         }
 
         private static bool Validar(string cpf)
         {
             if (string.IsNullOrWhiteSpace(cpf)) return false;
 
-            cpf = new Regex(@"\D").Replace(cpf, "");
+            cpf = RemoverCaracteresEspeciais(cpf);
 
             if (!SomenteNumerosInteiros(cpf)) return false;
 
@@ -63,5 +61,8 @@ namespace Cccat.Entities
 
             return restoDivisao < 2 ? 0 : 11 - restoDivisao;
         }
+
+        private static string RemoverCaracteresEspeciais(string texto)
+            => new Regex("\\D").Replace(texto, "");
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Cccat.Entities;
 using Cccat.Entities.Interfaces;
+using Cccat.Infra.Repositories;
 using Cccat.UseCases.Models;
 
 namespace Cccat.UseCases
@@ -10,14 +11,11 @@ namespace Cccat.UseCases
         private readonly ICupomRepository _cupomRepository;
         private readonly IPedidoRepository _pedidoRepository;
 
-        public Checkout(
-            ICupomRepository cupomRepository,
-            IProdutoRepository produtoRepository,
-            IPedidoRepository pedidoRepository)
+        public Checkout(IRepositoryFactory repositoryFactory)
         {
-            _cupomRepository = cupomRepository;
-            _produtoRepository = produtoRepository;
-            _pedidoRepository = pedidoRepository;
+            _cupomRepository = repositoryFactory.CriarCupomRepository();
+            _produtoRepository = repositoryFactory.CriarProdutoRepository();
+            _pedidoRepository = repositoryFactory.CriarPedidoRepository();
         }
 
         public async Task<CheckoutOutputDto> Executar(CheckoutInputDto input)

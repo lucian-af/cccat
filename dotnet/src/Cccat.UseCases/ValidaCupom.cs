@@ -1,4 +1,5 @@
 ﻿using Cccat.Entities.Interfaces;
+using Cccat.Infra.Repositories;
 
 namespace Cccat.UseCases
 {
@@ -6,8 +7,8 @@ namespace Cccat.UseCases
     {
         private readonly ICupomRepository _cupomRepository;
 
-        public ValidaCupom(ICupomRepository cupomRepository)
-            => _cupomRepository = cupomRepository;
+        public ValidaCupom(IRepositoryFactory repositoryFactory)
+            => _cupomRepository = repositoryFactory.CriarCupomRepository();
 
         public bool EhValido(string codigo)
         {

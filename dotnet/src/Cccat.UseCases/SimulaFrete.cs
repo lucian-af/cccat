@@ -1,5 +1,6 @@
 ﻿using Cccat.Entities;
 using Cccat.Entities.Interfaces;
+using Cccat.Infra.Repositories;
 using Cccat.UseCases.Models;
 
 namespace Cccat.UseCases
@@ -8,9 +9,9 @@ namespace Cccat.UseCases
     {
         private readonly IProdutoRepository _produtoRepository;
 
-        public SimulaFrete(IProdutoRepository produtoRepository)
+        public SimulaFrete(IRepositoryFactory repositoryFactory)
         {
-            _produtoRepository = produtoRepository;
+            _produtoRepository = repositoryFactory.CriarProdutoRepository();
         }
 
         public SimulaFreteOutputDto Simular(SimulaFreteInputDto input)
