@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDatabaseConfiguration(Environment.GetEnvironmentVariable("Conexao"));
-builder.Services.AddScoped<Checkout>();
+builder.Services.AddScoped<UseCaseFactory>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ICupomRepository, CupomRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();

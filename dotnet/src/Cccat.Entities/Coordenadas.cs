@@ -7,11 +7,11 @@
             if (origem.Latitude == destino.Latitude && origem.Longitude == destino.Longitude)
                 return 0;
 
-            double raioLatitudeOrigem = ObterRaio(origem.Latitude);
-            var raioLatitudeDestino = ObterRaio(destino.Latitude);
+            double raioLatitudeOrigem = origem.Latitude.ToRadius();
+            var raioLatitudeDestino = destino.Latitude.ToRadius();
 
             var angulo = origem.Longitude - destino.Longitude;
-            var raioAngulo = ObterRaio(angulo);
+            var raioAngulo = angulo.ToRadius();
 
             var distancia = ObterDistanciaRadial(raioLatitudeOrigem, raioLatitudeDestino, raioAngulo);
 
@@ -30,7 +30,7 @@
                Math.Cos(raioLatitudeOrigem) * Math.Cos(raioLatitudeDestino) *
                Math.Cos(raioTheta);
 
-        private static double ObterRaio(double latitude)
+        private static double ToRadius(this double latitude)
             => Math.PI * latitude / 180;
     }
 }

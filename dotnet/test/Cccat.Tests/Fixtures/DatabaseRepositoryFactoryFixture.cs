@@ -78,6 +78,9 @@ namespace Cccat.Tests.Fixtures
 
             public Produto Get(int idProduto)
                 => Produtos().Find(produto => produto.Id == idProduto);
+
+            public IEnumerable<Produto> All()
+                => Produtos();
         }
 
         internal class CupomRepositoryFake : ICupomRepository

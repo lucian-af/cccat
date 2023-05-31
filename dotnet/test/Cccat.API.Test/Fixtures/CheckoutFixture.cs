@@ -2,20 +2,8 @@
 
 namespace Cccat.API.Test.Fixtures
 {
-    [CollectionDefinition(nameof(CheckoutFixtureCollection))]
-    public class CheckoutFixtureCollection : ICollectionFixture<CheckoutFixture> { }
-
     public class CheckoutFixture
     {
-        public readonly HttpClient Client;
-        private readonly CustomWebApiFactory<Program> _factory;
-
-        public CheckoutFixture()
-        {
-            _factory = new CustomWebApiFactory<Program>();
-            Client = _factory.CreateClient();
-        }
-
         public CheckoutInputDto CriarInputValido()
         {
             return new CheckoutInputDto

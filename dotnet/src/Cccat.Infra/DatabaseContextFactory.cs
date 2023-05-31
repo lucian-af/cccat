@@ -15,5 +15,4 @@ namespace Cccat.Infra
             return new DatabaseContext(builder.Options);
         }
     }
-
 }

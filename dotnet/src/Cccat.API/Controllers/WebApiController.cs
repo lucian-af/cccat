@@ -5,15 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cccat.API.Controllers
 {
     [ApiController]
-    [Route("checkout")]
-    public class CheckoutController : ControllerBase
+    [Route("api")]
+    public class WebApiController : ControllerBase
     {
         private readonly Checkout _checkout;
+        private readonly ConsultaProduto _consultaProduto;
 
-        public CheckoutController(Checkout checkout)
-            => _checkout = checkout;
+        public WebApiController(UseCaseFactory factory)
+        {
+            _checkout = factory.CriarCheckout();
+            _consultaProduto = factory.CriarConsultaProduto();
+        }
 
         [HttpPost]
+        [Route("checkout")]
         public async Task<ActionResult<CheckoutOutputDto>> CriarPedido(CheckoutInputDto request)
         {
             try
@@ -25,6 +30,14 @@ namespace Cccat.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet]
+        [Route("produtos")]
+        public ActionResult<ConsultaProdutoOutputDto> ObterTodosProdutos()
+        {
+            var response = _consultaProduto.ObterTodos();
+            return Ok(response);
         }
     }
 }
