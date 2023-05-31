@@ -1,5 +1,5 @@
-using Cccat.UseCases;
-using Cccat.UseCases.Models;
+using Cccat.Application.Models;
+using Cccat.Application.UseCase;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;

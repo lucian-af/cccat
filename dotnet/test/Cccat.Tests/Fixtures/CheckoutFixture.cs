@@ -1,4 +1,4 @@
-﻿using Cccat.UseCases.Models;
+﻿using Cccat.Application.Models;
 
 namespace Cccat.Tests.Fixtures
 {

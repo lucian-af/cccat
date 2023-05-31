@@ -1,4 +1,5 @@
-﻿using Cccat.Entities;
+﻿using Cccat.Domain.Entities;
+using Cccat.Infra.Database;
 
 namespace Cccat.Infra.Seed
 {

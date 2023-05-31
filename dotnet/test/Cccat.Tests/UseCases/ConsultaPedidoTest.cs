@@ -1,7 +1,7 @@
-﻿using Cccat.Entities;
-using Cccat.Entities.Interfaces;
+﻿using Cccat.Application.UseCase;
+using Cccat.Domain.Entities;
+using Cccat.Domain.Interfaces;
 using Cccat.Tests.Fixtures;
-using Cccat.UseCases;
 
 namespace Cccat.Tests.UseCases
 {

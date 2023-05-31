@@ -1,4 +1,4 @@
-﻿using Cccat.Infra;
+﻿using Cccat.Infra.Database;
 using Cccat.Infra.Seed;
 using Microsoft.EntityFrameworkCore;
 

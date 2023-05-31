@@ -1,8 +1,8 @@
-using Cccat.Infra;
+using Cccat.Application.UseCase;
 using Cccat.Infra.Configurations;
+using Cccat.Infra.Database;
 using Cccat.Queue.Consumer;
 using Cccat.Queue.Consumer.Helpers;
-using Cccat.UseCases;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>

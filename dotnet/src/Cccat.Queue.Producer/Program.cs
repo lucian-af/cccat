@@ -1,4 +1,4 @@
-﻿using Cccat.UseCases.Models;
+﻿using Cccat.Application.Models;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;

@@ -1,5 +1,5 @@
-﻿using Cccat.Infra;
-using Cccat.Infra.Configurations;
+﻿using Cccat.Infra.Configurations;
+using Cccat.Infra.Database;
 using Cccat.Infra.Seed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;

@@ -1,5 +1,6 @@
-using Cccat.UseCases;
-using Cccat.UseCases.Models;
+using Cccat.Application.Factories;
+using Cccat.Application.Models;
+using Cccat.Application.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cccat.API.Controllers

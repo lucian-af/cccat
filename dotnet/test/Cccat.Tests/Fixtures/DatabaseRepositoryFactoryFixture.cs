@@ -1,7 +1,7 @@
-﻿using Cccat.Entities;
-using Cccat.Entities.Interfaces;
-using Cccat.Infra;
-using Cccat.Infra.Repositories;
+﻿using Cccat.Domain.Entities;
+using Cccat.Domain.Interfaces;
+using Cccat.Infra.Database;
+using Cccat.Infra.Factories;
 
 namespace Cccat.Tests.Fixtures
 {
@@ -24,7 +24,7 @@ namespace Cccat.Tests.Fixtures
             if (Fake)
                 return new DatabaseRepositoryFactoryFake();
 
-            return new DatabaseRepositoryFactory(DbContext);
+            return new RepositoryFactory(DbContext);
         }
 
         public void DeletarTodosPedidos()

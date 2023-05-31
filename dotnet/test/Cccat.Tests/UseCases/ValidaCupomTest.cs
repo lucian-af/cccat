@@ -1,5 +1,5 @@
-﻿using Cccat.Tests.Fixtures;
-using Cccat.UseCases;
+﻿using Cccat.Application.UseCase;
+using Cccat.Tests.Fixtures;
 
 namespace Cccat.Tests.UseCases
 {

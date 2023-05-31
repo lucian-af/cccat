@@ -1,8 +1,9 @@
 using Cccat.API.Helpers;
-using Cccat.Entities.Interfaces;
+using Cccat.Application.Factories;
+using Cccat.Domain.Interfaces;
 using Cccat.Infra.Configurations;
+using Cccat.Infra.Factories;
 using Cccat.Infra.Repositories;
-using Cccat.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Services.AddScoped<UseCaseFactory>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ICupomRepository, CupomRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
-builder.Services.AddScoped<IRepositoryFactory, DatabaseRepositoryFactory>();
+builder.Services.AddScoped<IRepositoryFactory, RepositoryFactory>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

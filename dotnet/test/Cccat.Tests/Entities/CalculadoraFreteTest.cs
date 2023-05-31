@@ -1,4 +1,4 @@
-﻿using Cccat.Entities;
+﻿using Cccat.Domain.Entities;
 
 namespace Cccat.Tests.Entities
 {

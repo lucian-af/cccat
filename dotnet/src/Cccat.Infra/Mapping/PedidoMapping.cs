@@ -1,4 +1,4 @@
-﻿using Cccat.Entities;
+﻿using Cccat.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

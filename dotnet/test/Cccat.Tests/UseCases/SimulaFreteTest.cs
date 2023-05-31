@@ -1,6 +1,6 @@
-﻿using Cccat.Tests.Fixtures;
-using Cccat.UseCases;
-using Cccat.UseCases.Models;
+﻿using Cccat.Application.Models;
+using Cccat.Application.UseCase;
+using Cccat.Tests.Fixtures;
 
 namespace Cccat.Tests.UseCases
 {

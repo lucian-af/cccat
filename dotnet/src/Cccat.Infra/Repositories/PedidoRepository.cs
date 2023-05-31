@@ -1,5 +1,6 @@
-﻿using Cccat.Entities;
-using Cccat.Entities.Interfaces;
+﻿using Cccat.Domain.Entities;
+using Cccat.Domain.Interfaces;
+using Cccat.Infra.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Infra.Repositories
