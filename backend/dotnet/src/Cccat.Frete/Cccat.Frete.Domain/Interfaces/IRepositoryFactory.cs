@@ -1,4 +1,4 @@
-﻿namespace Cccat.Domain.Interfaces
+﻿namespace Cccat.Frete.Domain.Interfaces
 {
     public interface IRepositoryFactory
     {

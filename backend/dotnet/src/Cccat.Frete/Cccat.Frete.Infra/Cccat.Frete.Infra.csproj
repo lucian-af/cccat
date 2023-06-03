@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Cccat.Domain\Cccat.Domain.csproj" />
+	  <ProjectReference Include="..\Cccat.Frete.Domain\Cccat.Frete.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

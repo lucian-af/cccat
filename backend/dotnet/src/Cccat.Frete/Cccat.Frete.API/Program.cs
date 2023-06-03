@@ -1,9 +1,9 @@
-using Cccat.API.Helpers;
-using Cccat.Application.Factories;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Configurations;
-using Cccat.Infra.Factories;
-using Cccat.Infra.Repositories;
+using Cccat.Frete.API.Helpers;
+using Cccat.Frete.Application.Factories;
+using Cccat.Frete.Domain.Interfaces;
+using Cccat.Frete.Infra.Configurations;
+using Cccat.Frete.Infra.Factories;
+using Cccat.Frete.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

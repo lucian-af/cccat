@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Cccat.Infra.Database
+namespace Cccat.Frete.Infra.Database
 {
     public class DatabaseContextFactory : IDesignTimeDbContextFactory<DatabaseContext>
     {

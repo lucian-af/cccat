@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Frete.Tests.Entities
 {
     public class CepTest
     {
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Frete.Cep")]
         [Fact]
         public void NaoDeveCriarCepComCoordenadasIguais()
         {
@@ -14,7 +14,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal("Coordenadas inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Frete.Cep")]
         [Theory]
         [InlineData("")]
         [InlineData(" ")]

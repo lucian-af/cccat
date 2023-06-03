@@ -1,6 +1,6 @@
-﻿using Cccat.Infra.Configurations;
-using Cccat.Infra.Database;
-using Cccat.Infra.Seed;
+﻿using Cccat.Frete.Infra.Configurations;
+using Cccat.Frete.Infra.Database;
+using Cccat.Frete.Infra.Seed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Cccat.API.Test.Fixtures
+namespace Cccat.Frete.API.Test.Fixtures
 {
     public class CustomWebApiFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {

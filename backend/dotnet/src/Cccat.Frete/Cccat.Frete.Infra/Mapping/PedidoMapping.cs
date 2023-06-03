@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Cccat.Infra.Mapping
+namespace Cccat.Frete.Infra.Mapping
 {
     public class PedidoMapping : IEntityTypeConfiguration<Pedido>
     {

@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cccat.Application\Cccat.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Cccat.Frete\Cccat.Frete.Application\Cccat.Frete.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Infra.Database;
+﻿using Cccat.Frete.Domain.Entities;
+using Cccat.Frete.Infra.Database;
 
-namespace Cccat.Infra.Seed
+namespace Cccat.Frete.Infra.Seed
 {
     public static class SeedData
     {

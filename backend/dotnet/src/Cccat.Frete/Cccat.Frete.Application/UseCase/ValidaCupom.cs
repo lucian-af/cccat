@@ -1,6 +1,6 @@
-﻿using Cccat.Domain.Interfaces;
+﻿using Cccat.Frete.Domain.Interfaces;
 
-namespace Cccat.Application.UseCase
+namespace Cccat.Frete.Application.UseCase
 {
     public class ValidaCupom
     {

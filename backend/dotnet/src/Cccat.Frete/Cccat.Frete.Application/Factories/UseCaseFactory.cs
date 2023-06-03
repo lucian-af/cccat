@@ -1,7 +1,7 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Domain.Interfaces;
+﻿using Cccat.Frete.Application.UseCase;
+using Cccat.Frete.Domain.Interfaces;
 
-namespace Cccat.Application.Factories
+namespace Cccat.Frete.Application.Factories
 {
     public class UseCaseFactory
     {

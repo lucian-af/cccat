@@ -1,4 +1,4 @@
-﻿namespace Cccat.API.Test.Fixtures
+﻿namespace Cccat.Frete.API.Test.Fixtures
 {
     [CollectionDefinition(nameof(WebApiFixtureCollection))]
     public class WebApiFixtureCollection : ICollectionFixture<WebApiFixture> { }

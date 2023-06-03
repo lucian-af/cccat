@@ -1,6 +1,6 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 
-namespace Cccat.Domain.Interfaces
+namespace Cccat.Frete.Domain.Interfaces
 {
     public interface IProdutoRepository
     {

@@ -1,7 +1,7 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Frete.Application.UseCase;
+using Cccat.Frete.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Frete.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class ConsultaProdutoTest
@@ -15,7 +15,7 @@ namespace Cccat.Tests.UseCases
             _consultaProduto = new ConsultaProduto(factory);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaProduto")]
+        [Trait("Cccat", "UseCases.Frete.ConsultaProduto")]
         [Fact]
         public void DeveObterTodosProdutos()
         {

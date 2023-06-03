@@ -1,7 +1,7 @@
-﻿using Cccat.Infra.Mapping;
+﻿using Cccat.Frete.Infra.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.Infra.Configurations
+namespace Cccat.Frete.Infra.Configurations
 {
     public static class MappingsConfiguration
     {

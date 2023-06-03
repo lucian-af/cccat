@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Frete.Tests.Entities
 {
     public class PedidoTest
     {
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void NaoDeveCriarPedidoComCpfInvalido()
         {
@@ -14,7 +14,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal("Cpf inválido.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void DeveCriarPedidoVazio()
         {
@@ -24,7 +24,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal(0, pedido.SubTotal);
         }
 
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void DeveCriarPedidoCom3Itens()
         {
@@ -36,7 +36,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal(6090, pedido.SubTotal);
         }
 
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void NaoDeveCriarPedidoComItemDuplicado()
         {
@@ -49,7 +49,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal("Não é permitido duplicar o mesmo item.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void DeveCriarPedidoEGeraCodigo()
         {
@@ -59,7 +59,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal($"{DateTime.Now.Year}00000001", pedido.Codigo);
         }
 
-        [Trait("Cccat", "Entities.Pedido")]
+        [Trait("Cccat", "Entities.Frete.Pedido")]
         [Fact]
         public void DeveCriarPedidoEAdicionarFreteValido()
         {

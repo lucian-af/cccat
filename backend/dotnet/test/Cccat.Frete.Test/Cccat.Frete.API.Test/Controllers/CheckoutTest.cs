@@ -1,8 +1,8 @@
-﻿using Cccat.API.Test.Fixtures;
-using Cccat.Application.Models;
+﻿using Cccat.Frete.API.Test.Fixtures;
+using Cccat.Frete.Application.Models;
 using System.Net.Http.Json;
 
-namespace Cccat.API.Test.Controllers
+namespace Cccat.Frete.API.Test.Controllers
 {
     [Collection(nameof(WebApiFixtureCollection))]
     public class CheckoutTest : IClassFixture<CheckoutFixture>
@@ -16,7 +16,7 @@ namespace Cccat.API.Test.Controllers
             _httpClient = webApiFixture.Client;
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_DeveCriarPedidoCom3Itens(string pathUrl)
@@ -30,7 +30,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(6090M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_DeveCriarPedidoCom3ItensComCupomDesconto(string pathUrl)
@@ -44,7 +44,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(4872M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_DeveAcrescerValorFreteNoPedido(string pathUrl)
@@ -61,7 +61,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(6250M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_DeveAcrescerValorFreteMinimoNoPedido(string pathUrl)
@@ -77,7 +77,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(6370M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_NaoDeveAplicarDescontoSeCupomExpirado(string pathUrl)
@@ -92,7 +92,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(6090M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_NaoDeveAplicarDescontoSeCupomInexistente(string pathUrl)
@@ -107,7 +107,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal(6090M, result.Total);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_NaoDeveCriarPedidoSeCpfInvalido(string pathUrl)
@@ -121,7 +121,7 @@ namespace Cccat.API.Test.Controllers
             Assert.Equal("Cpf inválido.", result);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_NaoDevePermitirItemComQuantidadeNegativa(string pathUrl)
@@ -137,7 +137,7 @@ namespace Cccat.API.Test.Controllers
             Assert.False(response.IsSuccessStatusCode);
         }
 
-        [Trait("Cccat", "API.Checkout")]
+        [Trait("Cccat", "API.Frete.Checkout")]
         [Theory]
         [InlineData("/api/checkout")]
         public async Task POST_NaoDevePermitirAdicionarItemDuplicado(string pathUrl)

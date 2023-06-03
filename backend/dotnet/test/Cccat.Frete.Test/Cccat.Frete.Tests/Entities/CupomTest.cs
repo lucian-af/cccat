@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Frete.Tests.Entities
 {
     public class CupomTest
     {
-        [Trait("Cccat", "Entities.Cupom")]
+        [Trait("Cccat", "Entities.Frete.Cupom")]
         [Fact]
         public void DeveValidarSeCupomValido()
         {
@@ -13,7 +13,7 @@ namespace Cccat.Tests.Entities
             Assert.True(cupom.Valido(DateTime.Today.AddDays(10)));
         }
 
-        [Trait("Cccat", "Entities.Cupom")]
+        [Trait("Cccat", "Entities.Frete.Cupom")]
         [Fact]
         public void DeveValidarSeCupomExpirado()
         {
@@ -22,7 +22,7 @@ namespace Cccat.Tests.Entities
             Assert.False(cupom.Valido(DateTime.Today));
         }
 
-        [Trait("Cccat", "Entities.Cupom")]
+        [Trait("Cccat", "Entities.Frete.Cupom")]
         [Fact]
         public void DeveCalcularDesconto()
         {

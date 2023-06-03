@@ -1,8 +1,8 @@
-﻿using Cccat.Infra.Database;
-using Cccat.Infra.Seed;
+﻿using Cccat.Frete.Infra.Database;
+using Cccat.Frete.Infra.Seed;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.API.Helpers
+namespace Cccat.Frete.API.Helpers
 {
     public static class DatabaseHelper
     {

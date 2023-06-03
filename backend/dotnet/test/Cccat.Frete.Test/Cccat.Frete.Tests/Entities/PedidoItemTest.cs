@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Frete.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Frete.Tests.Entities
 {
     public class PedidoItemTest
     {
-        [Trait("Cccat", "Entities.PedidoItem")]
+        [Trait("Cccat", "Entities.Frete.PedidoItem")]
         [Fact]
         public void NaoDeveCriarItemComQuantidadeInvalida()
         {

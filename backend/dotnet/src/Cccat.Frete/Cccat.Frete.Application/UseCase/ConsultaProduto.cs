@@ -1,7 +1,7 @@
-﻿using Cccat.Application.Models;
-using Cccat.Domain.Interfaces;
+﻿using Cccat.Frete.Application.Models;
+using Cccat.Frete.Domain.Interfaces;
 
-namespace Cccat.Application.UseCase
+namespace Cccat.Frete.Application.UseCase
 {
     public class ConsultaProduto
     {

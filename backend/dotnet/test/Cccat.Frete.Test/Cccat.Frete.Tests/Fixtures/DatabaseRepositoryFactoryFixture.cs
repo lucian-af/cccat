@@ -1,9 +1,9 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
-using Cccat.Infra.Factories;
+﻿using Cccat.Frete.Domain.Entities;
+using Cccat.Frete.Domain.Interfaces;
+using Cccat.Frete.Infra.Database;
+using Cccat.Frete.Infra.Factories;
 
-namespace Cccat.Tests.Fixtures
+namespace Cccat.Frete.Tests.Fixtures
 {
     public class DatabaseRepositoryFactoryFixture
     {

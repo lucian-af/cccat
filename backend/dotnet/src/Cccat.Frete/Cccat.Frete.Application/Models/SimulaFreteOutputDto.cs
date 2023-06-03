@@ -1,4 +1,4 @@
-﻿namespace Cccat.Application.Models
+﻿namespace Cccat.Frete.Application.Models
 {
     public class SimulaFreteOutputDto
     {

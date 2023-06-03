@@ -1,4 +1,4 @@
-﻿namespace Cccat.Domain.Entities
+﻿namespace Cccat.Frete.Domain.Entities
 {
     public class Pedido
     {

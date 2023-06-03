@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Infra.Configurations;
+﻿using Cccat.Frete.Domain.Entities;
+using Cccat.Frete.Infra.Configurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.Infra.Database
+namespace Cccat.Frete.Infra.Database
 {
     public class DatabaseContext : DbContext
     {

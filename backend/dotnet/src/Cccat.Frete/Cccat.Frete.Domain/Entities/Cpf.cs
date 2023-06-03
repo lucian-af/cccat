@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Cccat.Domain.Entities
+namespace Cccat.Frete.Domain.Entities
 {
     public class Cpf
     {

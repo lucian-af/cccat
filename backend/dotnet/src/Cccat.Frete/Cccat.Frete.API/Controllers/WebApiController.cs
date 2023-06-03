@@ -1,9 +1,9 @@
-using Cccat.Application.Factories;
-using Cccat.Application.Models;
-using Cccat.Application.UseCase;
+using Cccat.Frete.Application.Factories;
+using Cccat.Frete.Application.Models;
+using Cccat.Frete.Application.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cccat.API.Controllers
+namespace Cccat.Frete.API.Controllers
 {
     [ApiController]
     [Route("api")]

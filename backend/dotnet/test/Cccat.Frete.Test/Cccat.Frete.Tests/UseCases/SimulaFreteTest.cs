@@ -1,8 +1,8 @@
-﻿using Cccat.Application.Models;
-using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Frete.Application.Models;
+using Cccat.Frete.Application.UseCase;
+using Cccat.Frete.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Frete.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class SimulaFreteTest
@@ -16,7 +16,7 @@ namespace Cccat.Tests.UseCases
             _simulaFrete = new SimulaFrete(factory);
         }
 
-        [Trait("Cccat", "UseCases.SimulaFrete")]
+        [Trait("Cccat", "UseCases.Frete.SimulaFrete")]
         [Fact]
         public void DeveSimularFrete()
         {

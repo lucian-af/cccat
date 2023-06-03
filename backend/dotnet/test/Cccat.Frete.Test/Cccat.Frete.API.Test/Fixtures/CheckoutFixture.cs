@@ -1,6 +1,6 @@
-﻿using Cccat.Application.Models;
+﻿using Cccat.Frete.Application.Models;
 
-namespace Cccat.API.Test.Fixtures
+namespace Cccat.Frete.API.Test.Fixtures
 {
     public class CheckoutFixture
     {

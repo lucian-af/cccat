@@ -1,8 +1,8 @@
-﻿using Cccat.Application.Models;
-using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Frete.Application.Models;
+using Cccat.Frete.Application.UseCase;
+using Cccat.Frete.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Frete.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CalculaDistanciaTest
@@ -16,7 +16,7 @@ namespace Cccat.Tests.UseCases
             _calculaDistancia = new CalculaDistancia(factory);
         }
 
-        [Trait("Cccat", "UseCases.CalculaDistancia")]
+        [Trait("Cccat", "UseCases.Frete.CalculaDistancia")]
         [Fact]
         public void DeveCalcularDistancia()
         {

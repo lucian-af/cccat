@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cccat.Domain\Cccat.Domain.csproj" />
-    <ProjectReference Include="..\Cccat.Infra\Cccat.Infra.csproj" />
+    <ProjectReference Include="..\Cccat.Frete.Domain\Cccat.Frete.Domain.csproj" />
+    <ProjectReference Include="..\Cccat.Frete.Infra\Cccat.Frete.Infra.csproj" />
   </ItemGroup>
 
 </Project>

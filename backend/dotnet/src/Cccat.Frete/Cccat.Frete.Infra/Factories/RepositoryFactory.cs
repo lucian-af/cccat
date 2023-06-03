@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
-using Cccat.Infra.Repositories;
+﻿using Cccat.Frete.Domain.Interfaces;
+using Cccat.Frete.Infra.Database;
+using Cccat.Frete.Infra.Repositories;
 
-namespace Cccat.Infra.Factories
+namespace Cccat.Frete.Infra.Factories
 {
     public class RepositoryFactory : IRepositoryFactory
     {

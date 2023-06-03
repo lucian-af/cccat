@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
+﻿using Cccat.Frete.Domain.Entities;
+using Cccat.Frete.Domain.Interfaces;
+using Cccat.Frete.Infra.Database;
 
-namespace Cccat.Infra.Repositories
+namespace Cccat.Frete.Infra.Repositories
 {
     public class CepRepository : ICepRepository
     {
