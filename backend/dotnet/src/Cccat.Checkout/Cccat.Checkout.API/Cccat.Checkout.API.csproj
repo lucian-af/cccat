@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cccat.Application\Cccat.Application.csproj" />
-    <ProjectReference Include="..\Cccat.Infra\Cccat.Infra.csproj" />
+    <ProjectReference Include="..\Cccat.Checkout.Application\Cccat.Checkout.Application.csproj" />
+    <ProjectReference Include="..\Cccat.Checkout.Infra\Cccat.Checkout.Infra.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Cccat.Domain.Interfaces
+﻿namespace Cccat.Checkout.Domain.Interfaces
 {
     public interface IRepositoryFactory
     {

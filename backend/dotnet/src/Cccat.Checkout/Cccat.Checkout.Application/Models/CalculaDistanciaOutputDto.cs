@@ -1,4 +1,4 @@
-﻿namespace Cccat.Application.Models
+﻿namespace Cccat.Checkout.Application.Models
 {
     public class CalculaDistanciaOutputDto
     {

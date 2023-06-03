@@ -1,9 +1,9 @@
-using Cccat.API.Helpers;
-using Cccat.Application.Factories;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Configurations;
-using Cccat.Infra.Factories;
-using Cccat.Infra.Repositories;
+using Cccat.Checkout.API.Helpers;
+using Cccat.Checkout.Application.Factories;
+using Cccat.Checkout.Domain.Interfaces;
+using Cccat.Checkout.Infra.Configurations;
+using Cccat.Checkout.Infra.Factories;
+using Cccat.Checkout.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

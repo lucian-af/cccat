@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Cccat.Infra.Mapping
+namespace Cccat.Checkout.Infra.Mapping
 {
     public class PedidoMapping : IEntityTypeConfiguration<Pedido>
     {

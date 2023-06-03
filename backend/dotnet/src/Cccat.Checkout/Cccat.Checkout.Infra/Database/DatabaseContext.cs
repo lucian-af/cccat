@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Infra.Configurations;
+﻿using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Infra.Configurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.Infra.Database
+namespace Cccat.Checkout.Infra.Database
 {
     public class DatabaseContext : DbContext
     {

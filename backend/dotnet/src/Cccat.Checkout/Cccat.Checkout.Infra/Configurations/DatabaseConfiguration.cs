@@ -1,8 +1,8 @@
-﻿using Cccat.Infra.Database;
+﻿using Cccat.Checkout.Infra.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cccat.Infra.Configurations
+namespace Cccat.Checkout.Infra.Configurations
 {
     public static class DatabaseConfiguration
     {

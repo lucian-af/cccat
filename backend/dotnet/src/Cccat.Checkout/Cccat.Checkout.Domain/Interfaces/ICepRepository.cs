@@ -1,6 +1,6 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 
-namespace Cccat.Domain.Interfaces
+namespace Cccat.Checkout.Domain.Interfaces
 {
     public interface ICepRepository
     {

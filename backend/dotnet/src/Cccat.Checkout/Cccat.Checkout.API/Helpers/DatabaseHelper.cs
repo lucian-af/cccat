@@ -1,8 +1,8 @@
-﻿using Cccat.Infra.Database;
-using Cccat.Infra.Seed;
+﻿using Cccat.Checkout.Infra.Database;
+using Cccat.Checkout.Infra.Seed;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.API.Helpers
+namespace Cccat.Checkout.API.Helpers
 {
     public static class DatabaseHelper
     {

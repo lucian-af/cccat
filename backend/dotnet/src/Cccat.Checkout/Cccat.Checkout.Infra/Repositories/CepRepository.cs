@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
+﻿using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Domain.Interfaces;
+using Cccat.Checkout.Infra.Database;
 
-namespace Cccat.Infra.Repositories
+namespace Cccat.Checkout.Infra.Repositories
 {
     public class CepRepository : ICepRepository
     {

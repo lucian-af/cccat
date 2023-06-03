@@ -1,7 +1,7 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Infra.Database;
+﻿using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Infra.Database;
 
-namespace Cccat.Infra.Seed
+namespace Cccat.Checkout.Infra.Seed
 {
     public static class SeedData
     {
@@ -24,9 +24,7 @@ namespace Cccat.Infra.Seed
             {
                 new Produto(1,"A",1000,100,30,10,3),
                 new Produto(2,"B",5000,50,50,50,22),
-                new Produto(3,"C",30,10,10,10,.9m),
-                //new Produto(4,"D",30,-1,-1,-1,1),
-                //new Produto(5,"E",30,1,1,1,-1)
+                new Produto(3,"C",30,10,10,10,.9m)
             };
 
             await context.Produtos.AddRangeAsync(produtos);

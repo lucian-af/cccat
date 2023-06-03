@@ -1,7 +1,7 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Domain.Interfaces;
+﻿using Cccat.Checkout.Domain.Interfaces;
+using US = Cccat.Checkout.Application.UseCase;
 
-namespace Cccat.Application.Factories
+namespace Cccat.Checkout.Application.Factories
 {
     public class UseCaseFactory
     {
@@ -10,8 +10,8 @@ namespace Cccat.Application.Factories
         public UseCaseFactory(IRepositoryFactory repositoryFactory)
             => _repositoryFactory = repositoryFactory;
 
-        public Checkout CriarCheckout() => new(_repositoryFactory);
+        public US.Checkout CriarCheckout() => new(_repositoryFactory);
 
-        public ConsultaProduto CriarConsultaProduto() => new(_repositoryFactory);
+        public US.ConsultaProduto CriarConsultaProduto() => new(_repositoryFactory);
     }
 }

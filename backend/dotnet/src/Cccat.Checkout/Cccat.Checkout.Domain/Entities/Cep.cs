@@ -1,4 +1,4 @@
-﻿namespace Cccat.Domain.Entities
+﻿namespace Cccat.Checkout.Domain.Entities
 {
     public class Cep
     {

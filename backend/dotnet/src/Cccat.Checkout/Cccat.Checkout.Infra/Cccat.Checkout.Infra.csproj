@@ -20,7 +20,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Cccat.Domain\Cccat.Domain.csproj" />
+	  <ProjectReference Include="..\..\Cccat.Catalogo\Cccat.Catalogo.Infra\Cccat.Catalogo.Infra.csproj" />
+	  <ProjectReference Include="..\Cccat.Checkout.Domain\Cccat.Checkout.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

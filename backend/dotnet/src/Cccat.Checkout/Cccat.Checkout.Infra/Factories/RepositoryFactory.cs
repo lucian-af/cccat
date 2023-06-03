@@ -1,8 +1,8 @@
-﻿using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
-using Cccat.Infra.Repositories;
+﻿using Cccat.Checkout.Domain.Interfaces;
+using Cccat.Checkout.Infra.Database;
+using Cccat.Checkout.Infra.Repositories;
 
-namespace Cccat.Infra.Factories
+namespace Cccat.Checkout.Infra.Factories
 {
     public class RepositoryFactory : IRepositoryFactory
     {

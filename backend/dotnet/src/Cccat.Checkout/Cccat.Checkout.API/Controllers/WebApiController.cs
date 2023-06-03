@@ -1,16 +1,16 @@
-using Cccat.Application.Factories;
-using Cccat.Application.Models;
-using Cccat.Application.UseCase;
+using Cccat.Checkout.Application.Factories;
+using Cccat.Checkout.Application.Models;
 using Microsoft.AspNetCore.Mvc;
+using US = Cccat.Checkout.Application.UseCase;
 
-namespace Cccat.API.Controllers
+namespace Cccat.Checkout.API.Controllers
 {
     [ApiController]
     [Route("api")]
     public class WebApiController : ControllerBase
     {
-        private readonly Checkout _checkout;
-        private readonly ConsultaProduto _consultaProduto;
+        private readonly US.Checkout _checkout;
+        private readonly US.ConsultaProduto _consultaProduto;
 
         public WebApiController(UseCaseFactory factory)
         {

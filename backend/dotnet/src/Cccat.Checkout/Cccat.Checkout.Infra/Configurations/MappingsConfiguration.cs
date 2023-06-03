@@ -1,7 +1,7 @@
-﻿using Cccat.Infra.Mapping;
+﻿using Cccat.Checkout.Infra.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.Infra.Configurations
+namespace Cccat.Checkout.Infra.Configurations
 {
     public static class MappingsConfiguration
     {

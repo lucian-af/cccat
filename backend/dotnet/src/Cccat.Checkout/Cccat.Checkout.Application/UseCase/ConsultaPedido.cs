@@ -1,7 +1,7 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
+﻿using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Domain.Interfaces;
 
-namespace Cccat.Application.UseCase
+namespace Cccat.Checkout.Application.UseCase
 {
     public class ConsultaPedido
     {
