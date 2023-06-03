@@ -11,9 +11,4 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Cccat.Application\Cccat.Application.csproj" />
-	  <ProjectReference Include="..\Cccat.Infra\Cccat.Infra.csproj" />
-	</ItemGroup>
 </Project>
