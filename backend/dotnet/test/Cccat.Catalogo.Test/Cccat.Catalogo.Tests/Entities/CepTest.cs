@@ -4,7 +4,7 @@ namespace Cccat.Catalogo.Tests.Entities
 {
     public class CepTest
     {
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Catalogo.Cep")]
         [Fact]
         public void NaoDeveCriarCepComCoordenadasIguais()
         {
@@ -14,7 +14,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal("Coordenadas inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Catalogo.Cep")]
         [Theory]
         [InlineData("")]
         [InlineData(" ")]

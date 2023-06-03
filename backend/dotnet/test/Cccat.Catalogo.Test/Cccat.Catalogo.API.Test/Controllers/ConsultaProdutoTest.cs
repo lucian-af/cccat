@@ -12,7 +12,7 @@ namespace Cccat.Catalogo.API.Test.Controllers
         public ConsultaProdutoTest(WebApiFixture webApiFixture)
             => _httpClient = webApiFixture.Client;
 
-        [Trait("Cccat", "API.Produto")]
+        [Trait("Cccat", "API.Catalogo")]
         [Theory]
         [InlineData("api/produtos")]
         public async Task GET_DeveConsultarTodosProdutos(string pathUrl)

@@ -15,7 +15,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _validaCupom = new(factory);
         }
 
-        [Trait("Cccat", "UseCases.ValidaCupom")]
+        [Trait("Cccat", "UseCases.Catalogo.ValidaCupom")]
         [Fact]
         public void DeveValidarSeCupomValido()
         {
@@ -26,7 +26,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.True(output);
         }
 
-        [Trait("Cccat", "UseCases.ValidaCupom")]
+        [Trait("Cccat", "UseCases.Catalogo.ValidaCupom")]
         [Fact]
         public void DeveValidarSeCupomExpirado()
         {

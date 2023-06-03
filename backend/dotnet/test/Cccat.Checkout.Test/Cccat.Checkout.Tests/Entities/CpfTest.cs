@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Checkout.Tests.Entities
 {
     public class CpfTest
     {
-        [Trait("Cccat", "Entities.Cpf")]
+        [Trait("Cccat", "Entities.Checkout.Cpf")]
         [Theory]
         [InlineData("407.302.170-27")]
         [InlineData("684.053.160-00")]
@@ -15,7 +15,7 @@ namespace Cccat.Tests.Entities
             Assert.NotNull(cpf);
         }
 
-        [Trait("Cccat", "Entities.Cpf")]
+        [Trait("Cccat", "Entities.Checkout.Cpf")]
         [Theory]
         [InlineData("406.302.170-27")]
         [InlineData("684.053.160")]

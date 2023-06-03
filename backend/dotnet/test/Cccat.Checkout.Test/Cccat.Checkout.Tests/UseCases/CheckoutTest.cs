@@ -1,24 +1,24 @@
-﻿using Cccat.Application.Models;
-using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Tests.Fixtures;
+using US = Cccat.Checkout.Application.UseCase;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Checkout.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CheckoutTest
     {
         private readonly DatabaseRepositoryFactoryFixture _databaseRepositoryFactory;
         private readonly CheckoutFixture _checkoutFixture;
-        private readonly Checkout _checkout;
-        private readonly ConsultaPedido _consultarPedido;
+        private readonly US.Checkout _checkout;
+        private readonly US.ConsultaPedido _consultarPedido;
 
         public CheckoutTest(DatabaseFixture dbFixture)
         {
             _databaseRepositoryFactory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext);
             var factory = _databaseRepositoryFactory.CriarRepositoryFactory();
             _checkoutFixture = new();
-            _checkout = new Checkout(factory);
-            _consultarPedido = new ConsultaPedido(factory);
+            _checkout = new US.Checkout(factory);
+            _consultarPedido = new US.ConsultaPedido(factory);
         }
 
         [Trait("Cccat", "UseCases.Checkout")]

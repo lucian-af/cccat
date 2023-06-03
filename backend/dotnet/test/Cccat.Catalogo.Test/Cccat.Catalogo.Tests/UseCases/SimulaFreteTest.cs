@@ -16,7 +16,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _simulaFrete = new SimulaFrete(factory);
         }
 
-        [Trait("Cccat", "UseCases.SimulaFrete")]
+        [Trait("Cccat", "UseCases.Catalogo.SimulaFrete")]
         [Fact]
         public void DeveSimularFrete()
         {

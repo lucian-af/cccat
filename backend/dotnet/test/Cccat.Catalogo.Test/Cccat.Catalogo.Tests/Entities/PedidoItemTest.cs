@@ -4,7 +4,7 @@ namespace Cccat.Catalogo.Tests.Entities
 {
     public class PedidoItemTest
     {
-        [Trait("Cccat", "Entities.PedidoItem")]
+        [Trait("Cccat", "Entities.Catalogo.PedidoItem")]
         [Fact]
         public void NaoDeveCriarItemComQuantidadeInvalida()
         {

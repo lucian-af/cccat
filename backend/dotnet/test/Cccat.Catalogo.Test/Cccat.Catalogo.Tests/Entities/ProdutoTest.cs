@@ -4,7 +4,7 @@ namespace Cccat.Catalogo.Tests.Entities
 {
     public class ProdutoTest
     {
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void DeveCalcularVolume()
         {
@@ -13,7 +13,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal(0.03M, produto.Volume());
         }
 
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void DeveCalcularDensidade()
         {
@@ -22,7 +22,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal(100, produto.Densidade());
         }
 
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void NaoDeveCriarProdutoComLarguraInvalida()
         {
@@ -32,7 +32,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal("Dimensões do produto inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void NaoDeveCriarProdutoComAlturaInvalida()
         {
@@ -42,7 +42,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal("Dimensões do produto inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void NaoDeveCriarProdutoComProfundidadeInvalida()
         {
@@ -52,7 +52,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.Equal("Dimensões do produto inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Produto")]
+        [Trait("Cccat", "Entities.Catalogo.Produto")]
         [Fact]
         public void NaoDeveCriarProdutoComPesoInvalido()
         {

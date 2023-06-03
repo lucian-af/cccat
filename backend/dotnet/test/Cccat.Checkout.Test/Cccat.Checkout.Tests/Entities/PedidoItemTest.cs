@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Checkout.Tests.Entities
 {
     public class PedidoItemTest
     {
-        [Trait("Cccat", "Entities.PedidoItem")]
+        [Trait("Cccat", "Entities.Checkout.PedidoItem")]
         [Fact]
         public void NaoDeveCriarItemComQuantidadeInvalida()
         {

@@ -1,8 +1,8 @@
-﻿using Cccat.Application.Models;
-using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Application.UseCase;
+using Cccat.Checkout.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Checkout.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CalculaDistanciaTest
@@ -16,7 +16,7 @@ namespace Cccat.Tests.UseCases
             _calculaDistancia = new CalculaDistancia(factory);
         }
 
-        [Trait("Cccat", "UseCases.CalculaDistancia")]
+        [Trait("Cccat", "UseCases.Checkout.CalculaDistancia")]
         [Fact]
         public void DeveCalcularDistancia()
         {

@@ -19,7 +19,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _consultaPedido = new(factory);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Catalogo.ConsultaPedido")]
         [Fact]
         public void DeveConsultarPedidoPorId()
         {
@@ -33,7 +33,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(idPedido, result.Id);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Catalogo.ConsultaPedido")]
         [Fact]
         public void DeveConsultarPedidoPorCodigo()
         {
@@ -46,7 +46,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(pedido.Codigo, result.Codigo);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Catalogo.ConsultaPedido")]
         [Fact]
         public void DeveConsultarTodosPedidos()
         {

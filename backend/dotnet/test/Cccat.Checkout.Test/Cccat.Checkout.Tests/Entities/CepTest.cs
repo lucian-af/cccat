@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Checkout.Tests.Entities
 {
     public class CepTest
     {
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Checkout.Cep")]
         [Fact]
         public void NaoDeveCriarCepComCoordenadasIguais()
         {
@@ -14,7 +14,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal("Coordenadas inválidas.", result.Message);
         }
 
-        [Trait("Cccat", "Entities.Cep")]
+        [Trait("Cccat", "Entities.Checkout.Cep")]
         [Theory]
         [InlineData("")]
         [InlineData(" ")]

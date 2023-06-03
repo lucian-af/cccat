@@ -1,10 +1,10 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Checkout.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Checkout.Tests.Entities
 {
     public class CalculadoraFreteTest
     {
-        [Trait("Cccat", "Entities.CalculadoraFrete")]
+        [Trait("Cccat", "Entities.Checkout.CalculadoraFrete")]
         [Fact]
         public void DeveCalcularFrete()
         {
@@ -15,7 +15,7 @@ namespace Cccat.Tests.Entities
             Assert.Equal(30, frete);
         }
 
-        [Trait("Cccat", "Entities.CalculadoraFrete")]
+        [Trait("Cccat", "Entities.Checkout.CalculadoraFrete")]
         [Fact]
         public void DeveCalcularFreteMinimo()
         {

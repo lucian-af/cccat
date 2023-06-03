@@ -21,7 +21,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _consultarPedido = new ConsultaPedido(factory);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task NaoDeveCriarPedidoSeCpfInvalido()
         {
@@ -33,7 +33,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal("Cpf inválido.", response.Message);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveCriarPedidoCom3Itens()
         {
@@ -44,7 +44,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6090M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveCriarPedidoCom3ItensComCupomDesconto()
         {
@@ -55,7 +55,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(4872M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task NaoDeveAplicarDescontoSeCupomExpirado()
         {
@@ -67,7 +67,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6090M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task NaoDeveAplicarDescontoSeCupomInexistente()
         {
@@ -79,7 +79,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6090M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task NaoDevePermitirItemComQuantidadeNegativa()
         {
@@ -93,7 +93,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal("Quantidade inválida.", output.Message);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task NaoDevePermitirAdicionarItemDuplicado()
         {
@@ -106,7 +106,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal("Não é permitido duplicar o mesmo item.", output.Message);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveAcrescerValorFreteNoPedido()
         {
@@ -120,7 +120,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6250M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveAcrescerValorFreteMinimoNoPedido()
         {
@@ -133,7 +133,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6370M, output.Total);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveCriarPedidoCom3ItensEConsultarPedidoSalvo()
         {
@@ -148,7 +148,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             Assert.Equal(6090M, pedido.SubTotal);
         }
 
-        [Trait("Cccat", "UseCases.Checkout")]
+        [Trait("Cccat", "UseCases.Catalogo.Checkout")]
         [Fact]
         public async Task DeveCriarPedidoCom3ItensEGerarCodigoPedido()
         {

@@ -15,7 +15,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _consultaProduto = new ConsultaProduto(factory);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaProduto")]
+        [Trait("Cccat", "UseCases.Catalogo.ConsultaProduto")]
         [Fact]
         public void DeveObterTodosProdutos()
         {

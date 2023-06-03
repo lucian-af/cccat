@@ -16,7 +16,7 @@ namespace Cccat.Catalogo.Tests.UseCases
             _calculaDistancia = new CalculaDistancia(factory);
         }
 
-        [Trait("Cccat", "UseCases.CalculaDistancia")]
+        [Trait("Cccat", "UseCases.Catalogo.CalculaDistancia")]
         [Fact]
         public void DeveCalcularDistancia()
         {

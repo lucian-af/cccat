@@ -1,9 +1,9 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Checkout.Application.UseCase;
+using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Domain.Interfaces;
+using Cccat.Checkout.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Checkout.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class ConsultaPedidoTest
@@ -19,7 +19,7 @@ namespace Cccat.Tests.UseCases
             _consultaPedido = new(factory);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Checkout.ConsultaPedido")]
         [Fact]
         public void DeveConsultarPedidoPorId()
         {
@@ -33,7 +33,7 @@ namespace Cccat.Tests.UseCases
             Assert.Equal(idPedido, result.Id);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Checkout.ConsultaPedido")]
         [Fact]
         public void DeveConsultarPedidoPorCodigo()
         {
@@ -46,7 +46,7 @@ namespace Cccat.Tests.UseCases
             Assert.Equal(pedido.Codigo, result.Codigo);
         }
 
-        [Trait("Cccat", "UseCases.ConsultaPedido")]
+        [Trait("Cccat", "UseCases.Checkout.ConsultaPedido")]
         [Fact]
         public void DeveConsultarTodosPedidos()
         {

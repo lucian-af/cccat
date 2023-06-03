@@ -1,6 +1,6 @@
-﻿using Cccat.Infra.Configurations;
-using Cccat.Infra.Database;
-using Cccat.Infra.Seed;
+﻿using Cccat.Checkout.Infra.Configurations;
+using Cccat.Checkout.Infra.Database;
+using Cccat.Checkout.Infra.Seed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Cccat.API.Test.Fixtures
+namespace Cccat.Checkout.API.Test.Fixtures
 {
     public class CustomWebApiFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {

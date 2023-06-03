@@ -1,8 +1,8 @@
-﻿using Cccat.API.Test.Fixtures;
-using Cccat.Application.Models;
+﻿using Cccat.Checkout.API.Test.Fixtures;
+using Cccat.Checkout.Application.Models;
 using System.Net.Http.Json;
 
-namespace Cccat.API.Test.Controllers
+namespace Cccat.Checkout.API.Test.Controllers
 {
     [Collection(nameof(WebApiFixtureCollection))]
     public class ConsultaProdutoTest
@@ -12,7 +12,7 @@ namespace Cccat.API.Test.Controllers
         public ConsultaProdutoTest(WebApiFixture webApiFixture)
             => _httpClient = webApiFixture.Client;
 
-        [Trait("Cccat", "API.Produto")]
+        [Trait("Cccat", "API.Checkout")]
         [Theory]
         [InlineData("api/produtos")]
         public async Task GET_DeveConsultarTodosProdutos(string pathUrl)

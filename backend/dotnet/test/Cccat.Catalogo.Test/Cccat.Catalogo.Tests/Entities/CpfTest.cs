@@ -4,7 +4,7 @@ namespace Cccat.Catalogo.Tests.Entities
 {
     public class CpfTest
     {
-        [Trait("Cccat", "Entities.Cpf")]
+        [Trait("Cccat", "Entities.Catalogo.Cpf")]
         [Theory]
         [InlineData("407.302.170-27")]
         [InlineData("684.053.160-00")]
@@ -15,7 +15,7 @@ namespace Cccat.Catalogo.Tests.Entities
             Assert.NotNull(cpf);
         }
 
-        [Trait("Cccat", "Entities.Cpf")]
+        [Trait("Cccat", "Entities.Catalogo.Cpf")]
         [Theory]
         [InlineData("406.302.170-27")]
         [InlineData("684.053.160")]

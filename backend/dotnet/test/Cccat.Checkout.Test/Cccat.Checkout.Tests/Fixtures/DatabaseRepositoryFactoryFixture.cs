@@ -1,9 +1,9 @@
-﻿using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Infra.Database;
-using Cccat.Infra.Factories;
+﻿using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Domain.Interfaces;
+using Cccat.Checkout.Infra.Database;
+using Cccat.Checkout.Infra.Factories;
 
-namespace Cccat.Tests.Fixtures
+namespace Cccat.Checkout.Tests.Fixtures
 {
     public class DatabaseRepositoryFactoryFixture
     {

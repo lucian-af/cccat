@@ -1,7 +1,7 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Checkout.Application.UseCase;
+using Cccat.Checkout.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Checkout.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class ValidaCupomTest
@@ -15,7 +15,7 @@ namespace Cccat.Tests.UseCases
             _validaCupom = new(factory);
         }
 
-        [Trait("Cccat", "UseCases.ValidaCupom")]
+        [Trait("Cccat", "UseCases.Checkout.ValidaCupom")]
         [Fact]
         public void DeveValidarSeCupomValido()
         {
@@ -26,7 +26,7 @@ namespace Cccat.Tests.UseCases
             Assert.True(output);
         }
 
-        [Trait("Cccat", "UseCases.ValidaCupom")]
+        [Trait("Cccat", "UseCases.Checkout.ValidaCupom")]
         [Fact]
         public void DeveValidarSeCupomExpirado()
         {
