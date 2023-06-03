@@ -10,7 +10,7 @@ namespace Cccat.Catalogo.Application.Factories
         public UseCaseFactory(IRepositoryFactory repositoryFactory)
             => _repositoryFactory = repositoryFactory;
 
-        public Checkout CriarCheckout() => new(_repositoryFactory);
+        public ConsultaProdutos CriarConsultaProdutos() => new(_repositoryFactory);
 
         public ConsultaProduto CriarConsultaProduto() => new(_repositoryFactory);
     }

@@ -11,8 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDatabaseConfiguration(Environment.GetEnvironmentVariable("Conexao"));
 builder.Services.AddScoped<UseCaseFactory>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
-builder.Services.AddScoped<ICupomRepository, CupomRepository>();
-builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IRepositoryFactory, RepositoryFactory>();
 
 builder.Services.AddControllers();

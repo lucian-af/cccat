@@ -10,15 +10,21 @@ namespace Cccat.Catalogo.Application.UseCase
         public ConsultaProduto(IRepositoryFactory repositoryFactory)
             => _produtoRepository = repositoryFactory.CriarProdutoRepository();
 
-        public IEnumerable<ConsultaProdutoOutputDto> ObterTodos()
+        public ConsultaProdutoOutputDto Buscar(int idProduto)
         {
-            var produtos = _produtoRepository.All();
-            return produtos.Select(produto => new ConsultaProdutoOutputDto
+            var produto = _produtoRepository.Get(idProduto);
+            return new ConsultaProdutoOutputDto
             {
                 IdProduto = produto.Id,
                 Descricao = produto.Descricao,
                 Preco = produto.Preco,
-            });
+                Altura = produto.Altura,
+                Largura = produto.Largura,
+                Profundidade = produto.Profundidade,
+                Peso = produto.Peso,
+                Densidade = produto.Densidade(),
+                Volume = produto.Volume()
+            };
         }
     }
 }

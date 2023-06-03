@@ -4,22 +4,22 @@ using Cccat.Catalogo.Tests.Fixtures;
 namespace Cccat.Catalogo.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
-    public class ConsultaProdutoTest
+    public class ConsultaProdutosTest
     {
-        private readonly ConsultaProduto _consultaProduto;
+        private readonly ConsultaProdutos _consultaProdutos;
 
-        public ConsultaProdutoTest(DatabaseFixture dbFixture)
+        public ConsultaProdutosTest(DatabaseFixture dbFixture)
         {
             var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
                 .CriarRepositoryFactory();
-            _consultaProduto = new ConsultaProduto(factory);
+            _consultaProdutos = new ConsultaProdutos(factory);
         }
 
-        [Trait("Cccat", "UseCases.Catalogo.ConsultaProduto")]
+        [Trait("Cccat", "UseCases.Catalogo.ConsultaProdutos")]
         [Fact]
         public void DeveObterTodosProdutos()
         {
-            var output = _consultaProduto.ObterTodos();
+            var output = _consultaProdutos.Buscar();
 
             Assert.NotNull(output);
             Assert.True(output.Any());

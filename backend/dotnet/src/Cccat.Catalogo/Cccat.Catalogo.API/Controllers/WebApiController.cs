@@ -9,35 +9,28 @@ namespace Cccat.Catalogo.API.Controllers
     [Route("api")]
     public class WebApiController : ControllerBase
     {
-        private readonly Checkout _checkout;
+        private readonly ConsultaProdutos _consultaProdutos;
         private readonly ConsultaProduto _consultaProduto;
 
         public WebApiController(UseCaseFactory factory)
         {
-            _checkout = factory.CriarCheckout();
+            _consultaProdutos = factory.CriarConsultaProdutos();
             _consultaProduto = factory.CriarConsultaProduto();
-        }
-
-        [HttpPost]
-        [Route("checkout")]
-        public async Task<ActionResult<CheckoutOutputDto>> CriarPedido(CheckoutInputDto request)
-        {
-            try
-            {
-                var response = await _checkout.Executar(request);
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
         [HttpGet]
         [Route("produtos")]
-        public ActionResult<ConsultaProdutoOutputDto> ObterTodosProdutos()
+        public ActionResult<ConsultaProdutosOutputDto> ObterTodosProdutos()
         {
-            var response = _consultaProduto.ObterTodos();
+            var response = _consultaProdutos.Buscar();
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("produtos/{idProduto}")]
+        public ActionResult<ConsultaProdutoOutputDto> ObterProdutoPorId(int idProduto)
+        {
+            var response = _consultaProduto.Buscar(idProduto);
             return Ok(response);
         }
     }
