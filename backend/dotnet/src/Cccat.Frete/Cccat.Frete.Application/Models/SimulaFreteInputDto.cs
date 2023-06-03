@@ -9,7 +9,8 @@
 
     public class SimulaFreteItemDto
     {
-        public int IdProduto { get; set; }
+        public decimal Volume { get; set; }
+        public decimal Densidade { get; set; }
         public int Quantidade { get; set; }
     }
 }

@@ -9,36 +9,26 @@ namespace Cccat.Frete.API.Controllers
     [Route("api")]
     public class WebApiController : ControllerBase
     {
-        private readonly Checkout _checkout;
-        private readonly ConsultaProduto _consultaProduto;
+        private readonly SimulaFrete _simulaFrete;
 
         public WebApiController(UseCaseFactory factory)
         {
-            _checkout = factory.CriarCheckout();
-            _consultaProduto = factory.CriarConsultaProduto();
+            _simulaFrete = factory.CriarSimulaFrete();
         }
 
         [HttpPost]
-        [Route("checkout")]
-        public async Task<ActionResult<CheckoutOutputDto>> CriarPedido(CheckoutInputDto request)
+        [Route("simularfrete")]
+        public ActionResult<SimulaFreteOutputDto> CriarPedido(SimulaFreteInputDto request)
         {
             try
             {
-                var response = await _checkout.Executar(request);
+                var response = _simulaFrete.Simular(request);
                 return Ok(response);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        }
-
-        [HttpGet]
-        [Route("produtos")]
-        public ActionResult<ConsultaProdutoOutputDto> ObterTodosProdutos()
-        {
-            var response = _consultaProduto.ObterTodos();
-            return Ok(response);
         }
     }
 }

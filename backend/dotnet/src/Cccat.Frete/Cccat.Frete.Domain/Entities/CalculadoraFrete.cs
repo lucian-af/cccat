@@ -4,9 +4,9 @@
     {
         private const int ValorFreteMinimo = 10;
 
-        public static decimal Calcular(Produto produto)
+        public static decimal Calcular(decimal distancia, decimal volume, decimal densidade)
         {
-            var freteCalculado = produto.Volume() * 1000 * (produto.Densidade() / 100);
+            var freteCalculado = volume * distancia * (densidade / 100);
             return Math.Max(ValorFreteMinimo, freteCalculado);
         }
     }

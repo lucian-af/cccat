@@ -24,9 +24,12 @@ namespace Cccat.Frete.Tests.UseCases
             {
                 Items = new()
                 {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
+                    new SimulaFreteItemDto
+                    {
+                        Volume = 0.3m,
+                        Densidade = 100,
+                        Quantidade = 3
+                    }
                 },
                 CepOrigem = "17600090",
                 CepDestino = "17602700"
@@ -34,7 +37,7 @@ namespace Cccat.Frete.Tests.UseCases
 
             var output = _simulaFrete.Simular(input);
 
-            Assert.Equal(280, output.Frete);
+            Assert.Equal(900, output.Frete);
         }
     }
 }

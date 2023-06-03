@@ -13,14 +13,5 @@ namespace Cccat.Frete.Infra.Factories
 
         public ICepRepository CriarCepRepository()
             => new CepRepository(_context);
-
-        public ICupomRepository CriarCupomRepository()
-            => new CupomRepository(_context);
-
-        public IPedidoRepository CriarPedidoRepository()
-            => new PedidoRepository(_context);
-
-        public IProdutoRepository CriarProdutoRepository()
-            => new ProdutoRepository(_context);
     }
 }

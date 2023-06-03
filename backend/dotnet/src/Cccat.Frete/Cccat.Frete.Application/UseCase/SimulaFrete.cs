@@ -6,12 +6,9 @@ namespace Cccat.Frete.Application.UseCase
 {
     public class SimulaFrete
     {
-        private readonly IProdutoRepository _produtoRepository;
+        private const int DistanciaPadrao = 1000;
 
-        public SimulaFrete(IRepositoryFactory repositoryFactory)
-        {
-            _produtoRepository = repositoryFactory.CriarProdutoRepository();
-        }
+        public SimulaFrete(IRepositoryFactory repositoryFactory) { }
 
         public SimulaFreteOutputDto Simular(SimulaFreteInputDto input)
         {
@@ -20,8 +17,7 @@ namespace Cccat.Frete.Application.UseCase
             {
                 if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
                 {
-                    var produto = _produtoRepository.Get(item.IdProduto);
-                    var freteCalculado = CalculadoraFrete.Calcular(produto);
+                    var freteCalculado = CalculadoraFrete.Calcular(DistanciaPadrao, item.Volume, item.Densidade);
                     frete += freteCalculado * item.Quantidade;
                 }
             });

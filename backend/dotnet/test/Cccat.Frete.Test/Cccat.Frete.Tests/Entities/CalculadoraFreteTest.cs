@@ -8,10 +8,7 @@ namespace Cccat.Frete.Tests.Entities
         [Fact]
         public void DeveCalcularFrete()
         {
-            var produto = new Produto(1, "A", 1000, 1, 1, 1, 3);
-
-            var frete = CalculadoraFrete.Calcular(produto);
-
+            var frete = CalculadoraFrete.Calcular(1000, 0.03m, 100);
             Assert.Equal(30, frete);
         }
 
@@ -19,10 +16,7 @@ namespace Cccat.Frete.Tests.Entities
         [Fact]
         public void DeveCalcularFreteMinimo()
         {
-            var produto = new Produto(1, "A", 1000, 10, 10, 10, 0.9M);
-
-            var frete = CalculadoraFrete.Calcular(produto);
-
+            var frete = CalculadoraFrete.Calcular(1000, 0.01m, 100);
             Assert.Equal(10, frete);
         }
     }
