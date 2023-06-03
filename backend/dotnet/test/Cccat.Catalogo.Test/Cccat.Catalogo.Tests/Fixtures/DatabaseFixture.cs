@@ -1,8 +1,8 @@
-﻿using Cccat.Infra.Database;
-using Cccat.Infra.Seed;
+﻿using Cccat.Catalogo.Infra.Database;
+using Cccat.Catalogo.Infra.Seed;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cccat.Tests.Fixtures
+namespace Cccat.Catalogo.Tests.Fixtures
 {
     [CollectionDefinition(nameof(DatabaseFixtureCollection))]
     public class DatabaseFixtureCollection : ICollectionFixture<DatabaseFixture> { }

@@ -1,6 +1,6 @@
-﻿using Cccat.Application.Models;
+﻿using Cccat.Catalogo.Application.Models;
 
-namespace Cccat.API.Test.Fixtures
+namespace Cccat.Catalogo.API.Test.Fixtures
 {
     public class CheckoutFixture
     {

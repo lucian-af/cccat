@@ -1,9 +1,9 @@
-﻿using Cccat.Application.UseCase;
-using Cccat.Domain.Entities;
-using Cccat.Domain.Interfaces;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Catalogo.Application.UseCase;
+using Cccat.Catalogo.Domain.Entities;
+using Cccat.Catalogo.Domain.Interfaces;
+using Cccat.Catalogo.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Catalogo.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class ConsultaPedidoTest

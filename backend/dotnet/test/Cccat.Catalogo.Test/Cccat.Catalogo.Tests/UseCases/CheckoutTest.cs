@@ -1,8 +1,8 @@
-﻿using Cccat.Application.Models;
-using Cccat.Application.UseCase;
-using Cccat.Tests.Fixtures;
+﻿using Cccat.Catalogo.Application.Models;
+using Cccat.Catalogo.Application.UseCase;
+using Cccat.Catalogo.Tests.Fixtures;
 
-namespace Cccat.Tests.UseCases
+namespace Cccat.Catalogo.Tests.UseCases
 {
     [Collection(nameof(DatabaseFixtureCollection))]
     public class CheckoutTest

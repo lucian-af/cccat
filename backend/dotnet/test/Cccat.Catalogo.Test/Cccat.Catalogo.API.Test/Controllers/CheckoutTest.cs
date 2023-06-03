@@ -1,8 +1,8 @@
-﻿using Cccat.API.Test.Fixtures;
-using Cccat.Application.Models;
+﻿using Cccat.Catalogo.API.Test.Fixtures;
+using Cccat.Catalogo.Application.Models;
 using System.Net.Http.Json;
 
-namespace Cccat.API.Test.Controllers
+namespace Cccat.Catalogo.API.Test.Controllers
 {
     [Collection(nameof(WebApiFixtureCollection))]
     public class CheckoutTest : IClassFixture<CheckoutFixture>

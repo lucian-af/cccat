@@ -1,6 +1,6 @@
-﻿using Cccat.Domain.Entities;
+﻿using Cccat.Catalogo.Domain.Entities;
 
-namespace Cccat.Tests.Entities
+namespace Cccat.Catalogo.Tests.Entities
 {
     public class CupomTest
     {
