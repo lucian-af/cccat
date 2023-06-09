@@ -19,7 +19,7 @@
       "applicationUrl": "https://localhost:7181;http://localhost:5236",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "Conexao": "Server=localhost,1433;Database=CCCAT;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
+        "Conexao": "Server=localhost,1433;Database=CCCAT_Checkout;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
       }
     }
   }
