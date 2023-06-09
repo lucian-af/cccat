@@ -10,13 +10,9 @@ namespace Cccat.Checkout.API.Controllers
     public class WebApiController : ControllerBase
     {
         private readonly US.Checkout _checkout;
-        private readonly US.ConsultaProduto _consultaProduto;
 
         public WebApiController(UseCaseFactory factory)
-        {
-            _checkout = factory.CriarCheckout();
-            _consultaProduto = factory.CriarConsultaProduto();
-        }
+            => _checkout = factory.CriarCheckout();
 
         [HttpPost]
         [Route("checkout")]
@@ -31,14 +27,6 @@ namespace Cccat.Checkout.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }
-
-        [HttpGet]
-        [Route("produtos")]
-        public ActionResult<ConsultaProdutoOutputDto> ObterTodosProdutos()
-        {
-            var response = _consultaProduto.ObterTodos();
-            return Ok(response);
         }
     }
 }

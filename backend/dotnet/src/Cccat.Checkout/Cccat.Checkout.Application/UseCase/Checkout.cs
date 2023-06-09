@@ -1,4 +1,6 @@
-﻿using Cccat.Checkout.Application.Models;
+﻿using Cccat.Checkout.Application.Factories;
+using Cccat.Checkout.Application.Gateways;
+using Cccat.Checkout.Application.Models;
 using Cccat.Checkout.Domain.Entities;
 using Cccat.Checkout.Domain.Interfaces;
 
@@ -6,15 +8,17 @@ namespace Cccat.Checkout.Application.UseCase
 {
     public class Checkout
     {
-        private readonly IProdutoRepository _produtoRepository;
         private readonly ICupomRepository _cupomRepository;
         private readonly IPedidoRepository _pedidoRepository;
+        private readonly ICatalogoGateway _catalogoGateway;
+        private readonly IFreteGateway _freteGateway;
 
-        public Checkout(IRepositoryFactory repositoryFactory)
+        public Checkout(IRepositoryFactory repositoryFactory, IGatewayFactory gatewayFactory)
         {
             _cupomRepository = repositoryFactory.CriarCupomRepository();
-            _produtoRepository = repositoryFactory.CriarProdutoRepository();
             _pedidoRepository = repositoryFactory.CriarPedidoRepository();
+            _catalogoGateway = gatewayFactory.CriarCatalogoGateway();
+            _freteGateway = gatewayFactory.CriarFreteGateway();
         }
 
         public async Task<CheckoutOutputDto> Executar(CheckoutInputDto input)
@@ -22,18 +26,30 @@ namespace Cccat.Checkout.Application.UseCase
             var sequencia = await _pedidoRepository.ObterTotalPedidos() + 1;
             var pedido = new Pedido(input.IdPedido, input.Cpf, sequencia);
 
-            input.Items.ForEach(item =>
+            var simulaFrete = new SimulaFreteDto
             {
-                var produto = _produtoRepository.Get(item.IdProduto);
+                Items = new(),
+                CepOrigem = input.CepOrigem,
+                CepDestino = input.CepDestino,
+            };
+
+            foreach (var item in input.Items)
+            {
+                var produto = await _catalogoGateway.ConsultarProduto(item.IdProduto);
                 pedido.AdicionarItem(produto.Id, produto.Preco, item.Quantidade);
-
-                if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
+                simulaFrete.Items.Add(new()
                 {
-                    var frete = item.Quantidade * CalculadoraFrete.Calcular(produto);
-                    pedido.AdicionarFrete(frete);
-                }
+                    Densidade = produto.Densidade,
+                    Volume = produto.Volume,
+                    Quantidade = item.Quantidade
+                });
+            }
 
-            });
+            if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
+            {
+                var freteSimulado = await _freteGateway.Simularfrete(simulaFrete);
+                pedido.AdicionarFrete(freteSimulado.Frete);
+            }
 
             if (!string.IsNullOrWhiteSpace(input.Cupom))
             {

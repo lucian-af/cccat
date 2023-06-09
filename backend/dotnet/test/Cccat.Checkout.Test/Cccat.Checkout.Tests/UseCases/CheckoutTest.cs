@@ -1,4 +1,5 @@
 ﻿using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Infra.Factories;
 using Cccat.Checkout.Tests.Fixtures;
 using US = Cccat.Checkout.Application.UseCase;
 
@@ -17,7 +18,8 @@ namespace Cccat.Checkout.Tests.UseCases
             _databaseRepositoryFactory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext);
             var factory = _databaseRepositoryFactory.CriarRepositoryFactory();
             _checkoutFixture = new();
-            _checkout = new US.Checkout(factory);
+            var gatewayFactory = new GatewayHttpFactory(_checkoutFixture.ServiceProvider);
+            _checkout = new US.Checkout(factory, gatewayFactory);
             _consultarPedido = new US.ConsultaPedido(factory);
         }
 

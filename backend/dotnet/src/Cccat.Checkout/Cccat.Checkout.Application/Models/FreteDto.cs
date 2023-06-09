@@ -1,6 +1,6 @@
 ﻿namespace Cccat.Checkout.Application.Models
 {
-    public class SimulaFreteOutputDto
+    public class FreteDto
     {
         public decimal Frete { get; set; }
     }

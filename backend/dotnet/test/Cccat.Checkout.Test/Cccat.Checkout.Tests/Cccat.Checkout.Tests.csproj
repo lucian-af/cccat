@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Cccat.Checkout\Cccat.Checkout.Application\Cccat.Checkout.Application.csproj" />    
+    <ProjectReference Include="..\..\..\src\Cccat.Checkout\Cccat.Checkout.Application\Cccat.Checkout.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Cccat.Checkout\Cccat.Checkout.Infra\Cccat.Checkout.Infra.csproj" />    
   </ItemGroup>
 
 </Project>

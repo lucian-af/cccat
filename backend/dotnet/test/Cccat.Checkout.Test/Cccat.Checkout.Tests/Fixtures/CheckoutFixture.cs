@@ -1,9 +1,39 @@
-﻿using Cccat.Checkout.Application.Models;
+﻿using Cccat.Checkout.Application.Factories;
+using Cccat.Checkout.Application.Gateways;
+using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Infra.Factories;
+using Cccat.Checkout.Infra.Gateways;
+using Cccat.Checkout.Infra.HttpClients;
+using Microsoft.Extensions.DependencyInjection;
+using Refit;
 
 namespace Cccat.Checkout.Tests.Fixtures
 {
     public class CheckoutFixture
     {
+        public IServiceProvider ServiceProvider { get; private set; }
+
+        public CheckoutFixture()
+        {
+            ServiceProvider = CriarServiceCollection();
+        }
+
+        public IServiceProvider CriarServiceCollection()
+        {
+            var services = new ServiceCollection();
+            services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
+            services.AddScoped<IFreteGateway, FreteHttpGateway>();
+            services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
+            services
+                .AddRefitClient<IFreteHttpClient>()
+                .ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5002/api"));
+            services
+                .AddRefitClient<ICatalogoHttpClient>()
+                .ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5001/api"));
+
+            return services.BuildServiceProvider();
+        }
+
         public CheckoutInputDto CriarInputValido()
         {
             return new CheckoutInputDto

@@ -29,12 +29,6 @@ namespace Cccat.Checkout.Infra.Mapping
                 .ToTable(t => t.HasCheckConstraint("Ck_Quantidade", $"{nameof(PedidoItem.Quantidade)} > 0"));
 
             builder
-                .HasOne<Produto>()
-                .WithMany()
-                .HasForeignKey(e => e.IdProduto)
-                .IsRequired();
-
-            builder
                 .HasOne<Pedido>()
                 .WithMany(pdi => pdi.Itens)
                 .HasForeignKey(e => e.IdPedido)

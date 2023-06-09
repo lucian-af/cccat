@@ -6,7 +6,6 @@ namespace Cccat.Checkout.Infra.Database
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cupom> Cupons { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoItem> PedidoItens { get; set; }

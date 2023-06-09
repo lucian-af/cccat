@@ -1,6 +1,6 @@
 ﻿namespace Cccat.Checkout.Application.Models
 {
-    public class SimulaFreteInputDto
+    public class SimulaFreteDto
     {
         public string CepOrigem { get; set; }
         public string CepDestino { get; set; }
@@ -9,7 +9,8 @@
 
     public class SimulaFreteItemDto
     {
-        public int IdProduto { get; set; }
+        public decimal Volume { get; set; }
+        public decimal Densidade { get; set; }
         public int Quantidade { get; set; }
     }
 }

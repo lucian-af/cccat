@@ -57,6 +57,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Frete.API.Test", "tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Frete.Tests", "test\Cccat.Frete.Test\Cccat.Frete.Tests\Cccat.Frete.Tests.csproj", "{710E2BA3-AF75-4AE3-AE28-3970A17EC106}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29331862-E7D7-4B28-AC9B-7BA5EC1AD858}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cccat.Checkout.Domain\Cccat.Checkout.Domain.csproj" />
-    <ProjectReference Include="..\Cccat.Checkout.Infra\Cccat.Checkout.Infra.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,8 +19,5 @@ namespace Cccat.Checkout.Infra.Factories
 
         public IPedidoRepository CriarPedidoRepository()
             => new PedidoRepository(_context);
-
-        public IProdutoRepository CriarProdutoRepository()
-            => new ProdutoRepository(_context);
     }
 }

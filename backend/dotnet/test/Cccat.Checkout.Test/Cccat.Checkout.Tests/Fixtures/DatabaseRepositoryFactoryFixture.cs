@@ -45,9 +45,6 @@ namespace Cccat.Checkout.Tests.Fixtures
 
             public IPedidoRepository CriarPedidoRepository()
                 => new PedidoRepositoryFake();
-
-            public IProdutoRepository CriarProdutoRepository()
-                => new ProdutoRepositoryFake();
         }
 
         internal class CepRepositoryFake : ICepRepository
@@ -64,23 +61,6 @@ namespace Cccat.Checkout.Tests.Fixtures
 
             public Cep Get(string codigo)
                 => Ceps().Find(cep => cep.Codigo.Equals(codigo));
-        }
-
-        internal class ProdutoRepositoryFake : IProdutoRepository
-        {
-            private static List<Produto> Produtos()
-                => new()
-                {
-                    new Produto(1,"A",1000,100,30,10,3),
-                    new Produto(2,"B",5000,50,50,50,22),
-                    new Produto(3,"C",30,10,10,10,.9m)
-                };
-
-            public Produto Get(int idProduto)
-                => Produtos().Find(produto => produto.Id == idProduto);
-
-            public IEnumerable<Produto> All()
-                => Produtos();
         }
 
         internal class CupomRepositoryFake : ICupomRepository
