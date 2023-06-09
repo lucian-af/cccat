@@ -151,5 +151,22 @@ namespace Cccat.Checkout.API.Test.Controllers
 			Assert.Equal("Não é permitido duplicar o mesmo item.", result);
 			Assert.False(response.IsSuccessStatusCode);
 		}
+
+		[Trait("Cccat", "API.Checkout")]
+		[Theory]
+		[InlineData("/api/checkout")]
+		public async Task DeveCriarPedidoCom3ItensComCupomEFrete(string pathUrl)
+		{
+			var payload = _checkoutFixture.CriarInputValidoComCupomEFrete();
+
+			var response = await _httpClient.PostAsJsonAsync(pathUrl, payload);
+
+			response.EnsureSuccessStatusCode();
+			var result = await response.Content.ReadFromJsonAsync<CheckoutOutputDto>();
+			Assert.Equal(6090M, result.SubTotal);
+			Assert.Equal(5152M, result.Total);
+			Assert.Equal(280M, result.Frete);
+			Assert.Equal(1218M, result.Desconto);
+		}
 	}
 }

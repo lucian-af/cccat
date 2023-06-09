@@ -9,128 +9,130 @@ using Refit;
 
 namespace Cccat.Checkout.Tests.Fixtures
 {
-    public class CheckoutFixture
-    {
-        public IServiceProvider ServiceProvider { get; private set; }
+	public class CheckoutFixture
+	{
+		public IServiceProvider ServiceProvider { get; private set; }
 
-        public CheckoutFixture()
-        {
-            ServiceProvider = CriarServiceCollection();
-        }
+		public CheckoutFixture()
+			=> ServiceProvider = CriarServiceCollection();
 
-        public IServiceProvider CriarServiceCollection()
-        {
-            var services = new ServiceCollection();
-            services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
-            services.AddScoped<IFreteGateway, FreteHttpGateway>();
-            services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
-            services
-                .AddRefitClient<IFreteHttpClient>()
-                .ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5002/api"));
-            services
-                .AddRefitClient<ICatalogoHttpClient>()
-                .ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5001/api"));
+		public IServiceProvider CriarServiceCollection()
+		{
+			var services = new ServiceCollection();
+			services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
+			services.AddScoped<IFreteGateway, FreteHttpGateway>();
+			services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
+			services
+				.AddRefitClient<IFreteHttpClient>()
+				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5002/api"));
+			services
+				.AddRefitClient<ICatalogoHttpClient>()
+				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5001/api"));
 
-            return services.BuildServiceProvider();
-        }
+			return services.BuildServiceProvider();
+		}
 
-        public CheckoutInputDto CriarInputValido()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                },
-                Cupom = "VALE20",
-                CepOrigem = "17600090",
-                CepDestino = "17602700"
-            };
-        }
+		public CheckoutInputDto CriarInputValido()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				Cupom = "VALE20",
+				CepOrigem = "17600090",
+				CepDestino = "17602700"
+			};
 
-        public CheckoutInputDto CriarInputValidoSemCupomDesconto()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                },
-                CepOrigem = "17600090",
-                CepDestino = "17602700"
-            };
-        }
+		public CheckoutInputDto CriarInputValidoSemCupomDesconto()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				CepOrigem = "17600090",
+				CepDestino = "17602700"
+			};
 
-        public CheckoutInputDto CriarInputValidoSemFrete()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                },
-                Cupom = "VALE20"
-            };
-        }
+		public CheckoutInputDto CriarInputValidoSemFrete()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				Cupom = "VALE20"
+			};
 
-        public CheckoutInputDto CriarInputValidoSomenteItens()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                }
-            };
-        }
+		public CheckoutInputDto CriarInputValidoSomenteItens()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				}
+			};
 
-        public CheckoutInputDto CriarInputValidoComCupom()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                },
-                Cupom = "VALE20"
-            };
-        }
+		public CheckoutInputDto CriarInputValidoComCupom()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				Cupom = "VALE20"
+			};
 
-        public CheckoutInputDto CriarInputValidoComFrete()
-        {
-            return new CheckoutInputDto
-            {
-                IdPedido = Guid.NewGuid(),
-                Cpf = "407.302.170-27",
-                Items = new()
-                {
-                    new() { IdProduto = 1, Quantidade = 1 },
-                    new () { IdProduto = 2, Quantidade = 1 },
-                    new () { IdProduto = 3, Quantidade = 3 }
-                },
-                CepOrigem = "17600090",
-                CepDestino = "17602700"
-            };
-        }
-    }
+		public CheckoutInputDto CriarInputValidoComFrete()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				CepOrigem = "17600090",
+				CepDestino = "17602700"
+			};
+
+		public CheckoutInputDto CriarInputValidoComCupomEFrete()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				CepOrigem = "17600090",
+				CepDestino = "72980000",
+				Cupom = "VALE20"
+			};
+	}
 }

@@ -2,7 +2,7 @@
 {
 	public class Pedido
 	{
-		protected Pedido() { }
+		private Pedido() { }
 
 		public Guid Id { get; private set; }
 		public string Codigo { get; private set; }
@@ -10,6 +10,7 @@
 		public decimal Frete { get; private set; }
 		public DateTime DataHora { get; private set; }
 		public List<PedidoItem> Itens { get; private set; }
+		public decimal Desconto { get; private set; }
 		public decimal SubTotal
 		{
 			get => Itens.Sum(item => item.Total());
@@ -17,10 +18,10 @@
 		}
 		public decimal Total
 		{
-			get => SubTotal + Frete - (Cupom?.CalcularDesconto(SubTotal) ?? 0);
+			get => SubTotal + Frete - Desconto;
 			private set { }
 		}
-		public Cupom Cupom { get; private set; }
+		public int? IdCupom { get; private set; }
 
 		public Pedido(Guid id, string cpf, long sequencia = 1)
 		{
@@ -42,7 +43,10 @@
 		public void AdicionarCupom(Cupom cupom)
 		{
 			if (cupom.Valido(DataHora))
-				Cupom = cupom;
+			{
+				IdCupom = cupom.Id;
+				Desconto = cupom.CalcularDesconto(SubTotal);
+			}
 		}
 
 		public void AdicionarFrete(decimal valorFrete)

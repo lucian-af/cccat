@@ -90,5 +90,21 @@ namespace Cccat.Checkout.API.Test.Fixtures
 				CepOrigem = "17600090",
 				CepDestino = "17602700"
 			};
+
+		public CheckoutInputDto CriarInputValidoComCupomEFrete()
+			=> new CheckoutInputDto
+			{
+				IdPedido = Guid.NewGuid(),
+				Cpf = "407.302.170-27",
+				Items = new()
+				{
+					new() { IdProduto = 1, Quantidade = 1 },
+					new () { IdProduto = 2, Quantidade = 1 },
+					new () { IdProduto = 3, Quantidade = 3 }
+				},
+				CepOrigem = "17600090",
+				CepDestino = "17602700",
+				Cupom = "VALE20"
+			};
 	}
 }
