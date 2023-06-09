@@ -4,19 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Checkout.Infra.Database
 {
-    public class DatabaseContext : DbContext
-    {
-        public DbSet<Cupom> Cupons { get; set; }
-        public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<PedidoItem> PedidoItens { get; set; }
-        public DbSet<Cep> Ceps { get; set; }
+	public class DatabaseContext : DbContext
+	{
+		public DbSet<Cupom> Cupons { get; set; }
+		public DbSet<Pedido> Pedidos { get; set; }
+		public DbSet<PedidoItem> PedidoItens { get; set; }
 
-        public DatabaseContext(DbContextOptions options) : base(options) { }
+		public DatabaseContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.AddMappings();
-            base.OnModelCreating(modelBuilder);
-        }
-    }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.AddMappings();
+			base.OnModelCreating(modelBuilder);
+		}
+	}
 }
