@@ -181,8 +181,8 @@ namespace Cccat.Checkout.Tests.UseCases
 			var output = await _checkout.Executar(payload);
 
 			Assert.Equal(6090M, output.SubTotal);
-			Assert.Equal(5152M, output.Total);
-			Assert.Equal(280M, output.Frete);
+			Assert.Equal(203.99M, output.Frete);
+			Assert.Equal(5075.99M, output.Total);
 			Assert.Equal(1218M, output.Desconto);
 		}
 	}

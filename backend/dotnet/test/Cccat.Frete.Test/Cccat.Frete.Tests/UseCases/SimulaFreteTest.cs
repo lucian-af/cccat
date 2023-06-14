@@ -4,40 +4,64 @@ using Cccat.Frete.Tests.Fixtures;
 
 namespace Cccat.Frete.Tests.UseCases
 {
-    [Collection(nameof(DatabaseFixtureCollection))]
-    public class SimulaFreteTest
-    {
-        private readonly SimulaFrete _simulaFrete;
+	[Collection(nameof(DatabaseFixtureCollection))]
+	public class SimulaFreteTest
+	{
+		private readonly SimulaFrete _simulaFrete;
 
-        public SimulaFreteTest(DatabaseFixture dbFixture)
-        {
-            var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
-                .CriarRepositoryFactory();
-            _simulaFrete = new SimulaFrete(factory);
-        }
+		public SimulaFreteTest(DatabaseFixture dbFixture)
+		{
+			var factory = new DatabaseRepositoryFactoryFixture(dbFixture.DbContext)
+				.CriarRepositoryFactory();
+			_simulaFrete = new SimulaFrete(factory);
+		}
 
-        [Trait("Cccat", "UseCases.Frete.SimulaFrete")]
-        [Fact]
-        public void DeveSimularFrete()
-        {
-            var input = new SimulaFreteInputDto
-            {
-                Items = new()
-                {
-                    new SimulaFreteItemDto
-                    {
-                        Volume = 0.3m,
-                        Densidade = 100,
-                        Quantidade = 3
-                    }
-                },
-                CepOrigem = "17600090",
-                CepDestino = "17602700"
-            };
+		[Trait("Cccat", "UseCases.Frete.SimulaFrete")]
+		[Fact]
+		public void DeveSimularFreteSemCalcularDistancia()
+		{
+			var input = new SimulaFreteInputDto
+			{
+				Items = new()
+				{
+					new SimulaFreteItemDto
+					{
+						Volume = 0.3m,
+						Densidade = 100,
+						Quantidade = 3
+					}
+				},
+				CepOrigem = "17600090",
+				CepDestino = "17602700"
+			};
 
-            var output = _simulaFrete.Simular(input);
+			var output = _simulaFrete.Simular(input);
 
-            Assert.Equal(900, output.Frete);
-        }
-    }
+			Assert.Equal(900, output.Frete);
+		}
+
+		[Trait("Cccat", "UseCases.Frete.SimulaFrete")]
+		[Fact]
+		public void DeveSimularFreteComCalculoDistancia()
+		{
+			var input = new SimulaFreteInputDto
+			{
+				Items = new()
+				{
+					new SimulaFreteItemDto
+					{
+						Volume = 0.3m,
+						Densidade = 100,
+						Quantidade = 3
+					}
+				},
+				CepOrigem = "17600090",
+				CepDestino = "72980000"
+			};
+
+			var output = _simulaFrete.Simular(input);
+
+			Assert.Equal(626.37M, output.Frete);
+		}
+	}
 }

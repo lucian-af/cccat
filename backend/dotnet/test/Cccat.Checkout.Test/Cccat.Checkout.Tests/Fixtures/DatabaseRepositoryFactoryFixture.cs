@@ -15,9 +15,7 @@ namespace Cccat.Checkout.Tests.Fixtures
 		public DatabaseRepositoryFactoryFixture() { }
 
 		public DatabaseRepositoryFactoryFixture(DatabaseContext dbContext)
-		{
-			DbContext = dbContext;
-		}
+			=> DbContext = dbContext;
 
 		public IRepositoryFactory CriarRepositoryFactory()
 		{

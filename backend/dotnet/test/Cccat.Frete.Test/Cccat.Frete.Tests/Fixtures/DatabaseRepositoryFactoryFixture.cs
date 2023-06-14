@@ -42,7 +42,7 @@ namespace Cccat.Frete.Tests.Fixtures
 			public void AdicionarCep(Cep cep)
 				=> throw new NotImplementedException();
 
-			public Cep Get(string codigo)
+			public Cep ObterPorCodigo(string codigo)
 				=> Ceps().Find(cep => cep.Codigo.Equals(codigo));
 		}
 	}

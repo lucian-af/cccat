@@ -2,10 +2,10 @@
 
 namespace Cccat.Frete.Domain.Interfaces
 {
-    public interface ICepRepository
-    {
-        public Cep Get(string codigo);
+	public interface ICepRepository
+	{
+		public Cep ObterPorCodigo(string codigo);
 
-        public void AdicionarCep(Cep cep);
-    }
+		public void AdicionarCep(Cep cep);
+	}
 }

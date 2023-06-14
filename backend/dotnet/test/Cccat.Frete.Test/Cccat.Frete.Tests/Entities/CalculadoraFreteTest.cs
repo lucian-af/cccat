@@ -1,8 +1,8 @@
-﻿using Cccat.Frete.Domain.Entities;
+﻿using Cccat.Frete.Domain.Services;
 
 namespace Cccat.Frete.Tests.Entities
 {
-    public class CalculadoraFreteTest
+	public class CalculadoraFreteTest
     {
         [Trait("Cccat", "Entities.Frete.CalculadoraFrete")]
         [Fact]

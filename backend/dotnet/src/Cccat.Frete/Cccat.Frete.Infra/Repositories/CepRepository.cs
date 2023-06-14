@@ -11,7 +11,7 @@ namespace Cccat.Frete.Infra.Repositories
         public CepRepository(DatabaseContext context)
             => _context = context;
 
-        public Cep Get(string codigo)
+        public Cep ObterPorCodigo(string codigo)
             => _context.Ceps.FirstOrDefault(cp => cp.Codigo.Equals(codigo));
 
         public void AdicionarCep(Cep cep)
