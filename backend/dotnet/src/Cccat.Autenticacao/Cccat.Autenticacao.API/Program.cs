@@ -1,8 +1,8 @@
-using Cccat.Catalogo.API.Helpers;
-using Cccat.Catalogo.Application.Factories;
-using Cccat.Catalogo.Domain.Interfaces;
-using Cccat.Catalogo.Infra.Configurations;
-using Cccat.Catalogo.Infra.Factories;
+using Cccat.Autenticacao.API.Helpers;
+using Cccat.Autenticacao.Application.Factories;
+using Cccat.Autenticacao.Domain.Interfaces;
+using Cccat.Autenticacao.Infra.Configurations;
+using Cccat.Autenticacao.Infra.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 

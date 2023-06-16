@@ -10,7 +10,7 @@ namespace Cccat.Frete.Infra.Mapping
 		{
 			builder
 				.ToTable("CEP")
-				.HasKey(cep => cep.Id);
+				.HasIndex(cep => cep.Id);
 
 			builder
 				.Property(pr => pr.Codigo)

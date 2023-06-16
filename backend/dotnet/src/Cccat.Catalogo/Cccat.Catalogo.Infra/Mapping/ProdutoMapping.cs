@@ -10,7 +10,7 @@ namespace Cccat.Catalogo.Infra.Mapping
 		{
 			builder
 				.ToTable("PRODUTO")
-				.HasKey(pr => pr.Id);
+				.HasIndex(pr => pr.Id);
 
 			builder
 				.Property(pr => pr.Id)

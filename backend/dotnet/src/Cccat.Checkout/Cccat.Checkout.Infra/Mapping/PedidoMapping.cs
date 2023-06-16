@@ -9,12 +9,7 @@ namespace Cccat.Checkout.Infra.Mapping
 		public void Configure(EntityTypeBuilder<Pedido> builder)
 		{
 			builder.ToTable("PEDIDOS");
-
-			builder
-				.Property(pr => pr.Id)
-				.HasColumnType("uniqueidentifier")
-				.IsRequired()
-				.ValueGeneratedNever();
+			builder.HasKey(pr => pr.Id);
 
 			builder
 				.Property(pr => pr.Codigo)
