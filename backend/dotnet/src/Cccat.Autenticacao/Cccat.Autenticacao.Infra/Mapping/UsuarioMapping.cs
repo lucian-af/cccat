@@ -23,21 +23,17 @@ public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
 			.IsUnique();
 
 		builder
-			.Property(pr => pr.Senha)
+			.OwnsOne(us => us.Senha)
+			.Property(sh => sh.Valor)
+			.HasColumnName(nameof(Usuario.Senha))
 			.HasColumnType("VARCHAR(MAX)")
 			.IsRequired();
 
 		builder
-			.Property(pr => pr.Salt)
+			.OwnsOne(us => us.Senha)
+			.Property(sh => sh.Salt)
+			.HasColumnName(nameof(Senha.Salt))
 			.HasColumnType("VARCHAR(MAX)")
 			.IsRequired();
-
-		//builder
-		//	.OwnsOne(pr => pr.Dimensao)
-		//	.Property(pd => pd.Largura)
-		//	.HasColumnName(nameof(ProdutoDimensao.Largura))
-		//	.HasColumnType("DECIMAL(14,2)")
-		//	.HasDefaultValue(0)
-		//	.IsRequired();		
 	}
 }

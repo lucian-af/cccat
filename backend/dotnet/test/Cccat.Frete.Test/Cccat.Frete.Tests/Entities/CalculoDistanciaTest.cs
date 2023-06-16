@@ -5,7 +5,7 @@ namespace Cccat.Frete.Tests.Entities
 {
 	public class CalculoDistanciaTest
 	{
-		[Trait("Cccat", "Entities.Frete.CalculoDistancia")]
+		[Trait("Cccat", "Domain.Services.Frete.CalculoDistancia")]
 		[Fact]
 		public void DeveCalcularDistanciaEntreCoordenadas()
 		{
@@ -17,7 +17,7 @@ namespace Cccat.Frete.Tests.Entities
 			Assert.Equal(3020.17M, distancia);
 		}
 
-		[Trait("Cccat", "Entities.Frete.CalculoDistancia")]
+		[Trait("Cccat", "Domain.Services.Frete.CalculoDistancia")]
 		[Fact]
 		public void NaoDeveCalcularDistanciaEntreCoordenadasSeCoordenadasIguais()
 		{

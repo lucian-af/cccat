@@ -12,5 +12,8 @@ namespace Cccat.Autenticacao.Application.Factories
 
 		public CadastraUsuario CriarCadastraUsuario()
 			=> new(_repositoryFactory);
+
+		public AutenticaUsuario CriarAutenticaUsuario()
+			=> new(_repositoryFactory);
 	}
 }

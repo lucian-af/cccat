@@ -10,9 +10,13 @@ namespace Cccat.Autenticacao.API.Controllers
 	public class WebApiController : ControllerBase
 	{
 		private readonly CadastraUsuario _cadastraUsuario;
+		private readonly AutenticaUsuario _autenticaUsuario;
 
 		public WebApiController(UseCaseFactory factory)
-			=> _cadastraUsuario = factory.CriarCadastraUsuario();
+		{
+			_cadastraUsuario = factory.CriarCadastraUsuario();
+			_autenticaUsuario = factory.CriarAutenticaUsuario();
+		}
 
 		[HttpPost]
 		[Route("autenticacao/cadastrar")]
@@ -20,6 +24,14 @@ namespace Cccat.Autenticacao.API.Controllers
 		{
 			var response = await _cadastraUsuario.Cadastrar(request);
 			return Ok(response.IdUsuario);
+		}
+
+		[HttpPost]
+		[Route("autenticacao/autenticar")]
+		public async Task<ActionResult<AutenticaUsuarioOutputDto>> AutenticarUsuario(AutenticaUsuarioInputDto request)
+		{
+			var response = await _autenticaUsuario.Autenticar(request);
+			return Ok(response);
 		}
 	}
 }

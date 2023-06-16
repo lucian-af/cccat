@@ -1,6 +1,7 @@
 ﻿using Cccat.Autenticacao.Application.Models;
 using Cccat.Autenticacao.Application.UseCases;
 using Cccat.Autenticacao.Domain.Interfaces;
+using Cccat.Autenticacao.Domain.Services;
 using Cccat.Autenticacao.Tests.Fixtures;
 
 namespace Cccat.Autenticacao.Tests.UseCases
@@ -50,7 +51,7 @@ namespace Cccat.Autenticacao.Tests.UseCases
 			var autenticacao = await _autenticaUsuario.Autenticar(autenticaUsuarioInput);
 
 			Assert.NotNull(autenticacao);
-			Assert.False(string.IsNullOrWhiteSpace(autenticacao.Token));
+			Assert.True(TokenJwt.Validar(autenticacao.Token));
 		}
 	}
 }
