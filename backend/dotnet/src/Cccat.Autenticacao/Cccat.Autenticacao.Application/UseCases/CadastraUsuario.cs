@@ -1,5 +1,6 @@
 ﻿using Cccat.Autenticacao.Application.Models;
 using Cccat.Autenticacao.Domain.Entities;
+using Cccat.Autenticacao.Domain.Enums;
 using Cccat.Autenticacao.Domain.Interfaces;
 
 namespace Cccat.Autenticacao.Application.UseCases
@@ -13,7 +14,7 @@ namespace Cccat.Autenticacao.Application.UseCases
 
 		public async Task<Output> Cadastrar(CadastraUsuarioInputDto input)
 		{
-			var usuario = new Usuario(input.Email, input.Senha);
+			var usuario = Usuario.Criar(input.Email, input.Senha, SenhaTipo.Md5);
 			await _usuarioRepository.Cadastrar(usuario);
 
 			return new Output { IdUsuario = usuario.Id };

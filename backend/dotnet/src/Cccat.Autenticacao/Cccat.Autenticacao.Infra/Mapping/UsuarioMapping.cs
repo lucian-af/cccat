@@ -1,39 +1,36 @@
-﻿using Cccat.Autenticacao.Domain.Entities;
+﻿using Cccat.Autenticacao.Infra.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Cccat.Autenticacao.Infra.Mapping;
-public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
+public class UsuarioMapping : IEntityTypeConfiguration<UsuarioDb>
 {
-	public void Configure(EntityTypeBuilder<Usuario> builder)
+	public void Configure(EntityTypeBuilder<UsuarioDb> builder)
 	{
 		builder.ToTable("USUARIO");
-		builder.HasKey(pr => pr.Id);
+		builder.HasKey(us => us.Id);
 
 		builder
-			.OwnsOne(us => us.Email)
-			.Property(em => em.Valor)
-			.HasColumnName(nameof(Usuario.Email))
+			.Property(us => us.Email)
 			.HasColumnType("VARCHAR(60)")
 			.IsRequired();
 
 		builder
-			.OwnsOne(us => us.Email)
-			.HasIndex(em => em.Valor)
+			.HasIndex(em => em.Email)
 			.IsUnique();
 
 		builder
-			.OwnsOne(us => us.Senha)
-			.Property(sh => sh.Valor)
-			.HasColumnName(nameof(Usuario.Senha))
+			.Property(us => us.Senha)
 			.HasColumnType("VARCHAR(MAX)")
 			.IsRequired();
 
 		builder
-			.OwnsOne(us => us.Senha)
-			.Property(sh => sh.Salt)
-			.HasColumnName(nameof(Senha.Salt))
-			.HasColumnType("VARCHAR(MAX)")
+			.Property(us => us.Salt)
+			.HasColumnType("VARCHAR(MAX)");
+
+		builder
+			.Property(us => us.SenhaTipo)
+			.HasColumnType("TINYINT")
 			.IsRequired();
 	}
 }

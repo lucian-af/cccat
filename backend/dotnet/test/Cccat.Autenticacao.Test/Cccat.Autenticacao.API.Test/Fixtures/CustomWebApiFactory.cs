@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Respawn;
 
@@ -35,6 +36,11 @@ namespace Cccat.Autenticacao.API.Test.Fixtures
 
 			builder.UseEnvironment("Staging");
 			var host = builder.Start();
+
+			using var serviceScope = host.Services.CreateScope();
+			var dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+
+			dbContext.Database.EnsureCreatedAsync().Wait();
 
 			var resp = Respawner.CreateAsync(connectionString).GetAwaiter().GetResult();
 			resp.ResetAsync(connectionString).Wait();
