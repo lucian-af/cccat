@@ -24,10 +24,10 @@ namespace Cccat.Checkout.Tests.Fixtures
 			services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
 			services
 				.AddRefitClient<IFreteHttpClient>()
-				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5002/api"));
+				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5102/api"));
 			services
 				.AddRefitClient<ICatalogoHttpClient>()
-				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("https://localhost:5001/api"));
+				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5101/api"));
 
 			return services.BuildServiceProvider();
 		}

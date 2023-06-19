@@ -1,17 +1,26 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "profiles": {    
+{
+  "profiles": {
     "https": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "useSSL": true,
-      "applicationUrl": "https://localhost:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "Conexao": "Server=localhost,1433;Database=CCCAT_Catalogo;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Conexao": "Server=172.23.0.2,1433;Database=CCCAT_Catalogo;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
       }
     }
-  }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
 }

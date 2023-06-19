@@ -17,14 +17,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsStaging())
 {
-    app.ExecutarSeedDados().Wait();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.ExecutarSeedDados().Wait();
 }
 
-app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
