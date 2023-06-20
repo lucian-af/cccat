@@ -12,17 +12,12 @@ namespace Cccat.Autenticacao.Application.UseCases
 		public CadastraUsuario(IRepositoryFactory factory)
 			=> _usuarioRepository = factory.CriarUsuarioRepository();
 
-		public async Task<Output> Cadastrar(CadastraUsuarioInputDto input)
+		public async Task<CadastraUsuarioOutputDto> Cadastrar(CadastraUsuarioInputDto input)
 		{
 			var usuario = Usuario.Criar(input.Email, input.Senha, SenhaTipo.Pbkdf2);
 			await _usuarioRepository.Cadastrar(usuario);
 
-			return new Output { IdUsuario = usuario.Id };
+			return new CadastraUsuarioOutputDto { IdUsuario = usuario.Id };
 		}
-	}
-
-	public class Output
-	{
-		public Guid IdUsuario { get; set; }
 	}
 }
