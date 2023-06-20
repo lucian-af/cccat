@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 ENV ASPNETCORE_URLS=http://+:5101
 EXPOSE 5101
 
-ENV Conexao="Server=172.23.0.2,1433;Database=CCCAT_Catalogo;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
+ENV Conexao="Server=172.23.0.100,1433;Database=CCCAT_Catalogo;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
 
 WORKDIR /app
 
