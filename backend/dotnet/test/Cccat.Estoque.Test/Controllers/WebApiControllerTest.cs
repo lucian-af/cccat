@@ -1,5 +1,5 @@
-﻿using Cccat.Estoque.API.Test.Fixtures;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
+using Cccat.Estoque.API.Test.Fixtures;
 
 namespace Cccat.Estoque.API.Test.Controllers
 {
@@ -11,7 +11,7 @@ namespace Cccat.Estoque.API.Test.Controllers
 		public WebApiControllerTest(WebApiFixture webApiFixture)
 			=> _httpClient = webApiFixture.Client;
 
-		[Trait("Contexto", "API")]
+		[Trait("Cccat", "API.Estoque")]
 		[Theory]
 		[InlineData("api/route")]
 		public async Task GET(string pathUrl)
