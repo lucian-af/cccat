@@ -1,4 +1,5 @@
 ﻿using Cccat.Autenticacao.Infra.Database;
+using Cccat.Autenticacao.Infra.Seed;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cccat.Autenticacao.API.Helpers
@@ -21,6 +22,8 @@ namespace Cccat.Autenticacao.API.Helpers
 				await dbContext.Database.EnsureCreatedAsync();
 
 			ExecutarMigrations(dbContext);
+
+			await SeedData.CriarDados(dbContext);
 		}
 	}
 }
