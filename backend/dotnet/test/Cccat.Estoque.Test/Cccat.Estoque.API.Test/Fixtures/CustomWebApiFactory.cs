@@ -1,4 +1,6 @@
-﻿using Cccat.Estoque.Infra.Configurations;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Cccat.Estoque.Infra.Configurations;
 using Cccat.Estoque.Infra.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -6,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Respawn;
 
 namespace Cccat.Estoque.API.Test.Fixtures
@@ -52,6 +55,20 @@ namespace Cccat.Estoque.API.Test.Fixtures
 			Respawner.ResetAsync(ConnectionString).Wait();
 
 			return host;
+		}
+
+		public string GerarToken()
+		{
+			var chave = "<um-super-segredo>";
+
+			var hashKey = Encoding.ASCII.GetBytes(chave);
+			var tokenDescriptor = new SecurityTokenDescriptor
+			{
+				Expires = DateTime.Now.AddMinutes(10).ToUniversalTime(),
+				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(hashKey), SecurityAlgorithms.HmacSha256)
+			};
+			var tokenHandler = new JwtSecurityTokenHandler();
+			return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
 		}
 	}
 }

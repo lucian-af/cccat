@@ -4,22 +4,25 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Cccat.Checkout.Infra.Factories
 {
-    public class GatewayHttpFactory : IGatewayFactory
-    {
-        private readonly IServiceProvider _serviceProvider;
+	public class GatewayHttpFactory : IGatewayFactory
+	{
+		private readonly IServiceProvider _serviceProvider;
 
-        public GatewayHttpFactory(IServiceProvider serviceProvider)
-        {
-            if (serviceProvider is null)
-                ArgumentException.ThrowIfNullOrEmpty(nameof(serviceProvider));
+		public GatewayHttpFactory(IServiceProvider serviceProvider)
+		{
+			if (serviceProvider is null)
+				ArgumentException.ThrowIfNullOrEmpty(nameof(serviceProvider));
 
-            _serviceProvider = serviceProvider;
-        }
+			_serviceProvider = serviceProvider;
+		}
 
-        public ICatalogoGateway CriarCatalogoGateway()
-            => _serviceProvider.GetRequiredService<ICatalogoGateway>();
+		public ICatalogoGateway CriarCatalogoGateway()
+			=> _serviceProvider.GetRequiredService<ICatalogoGateway>();
 
-        public IFreteGateway CriarFreteGateway()
-            => _serviceProvider.GetRequiredService<IFreteGateway>();
-    }
+		public IFreteGateway CriarFreteGateway()
+			=> _serviceProvider.GetRequiredService<IFreteGateway>();
+
+		public IEstoqueGateway CriarEstoqueGateway()
+			=> _serviceProvider.GetRequiredService<IEstoqueGateway>();
+	}
 }

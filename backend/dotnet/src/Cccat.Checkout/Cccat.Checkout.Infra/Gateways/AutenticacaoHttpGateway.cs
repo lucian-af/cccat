@@ -1,4 +1,5 @@
-﻿using Cccat.Checkout.Infra.HttpClients;
+﻿using Cccat.Checkout.Infra.Factories;
+using Cccat.Checkout.Infra.HttpClients;
 using Cccat.Checkout.Infra.HttpClients.Dtos;
 
 namespace Cccat.Checkout.Infra.Gateways
@@ -7,8 +8,8 @@ namespace Cccat.Checkout.Infra.Gateways
 	{
 		private readonly IAutenticacaoHttpClient _httpClient;
 
-		public AutenticacaoHttpGateway(IAutenticacaoHttpClient httpClient)
-			=> _httpClient = httpClient;
+		public AutenticacaoHttpGateway(HttpClientFactory factory)
+			=> _httpClient = factory.CriarAutenticacaoHttpClient();
 
 		public async Task<AutenticacaoResponseDto> Autenticar(AutenticacaoDto dados)
 		{

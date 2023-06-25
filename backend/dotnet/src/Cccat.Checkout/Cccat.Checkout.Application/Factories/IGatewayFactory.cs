@@ -2,9 +2,10 @@
 
 namespace Cccat.Checkout.Application.Factories
 {
-    public interface IGatewayFactory
-    {
-        public ICatalogoGateway CriarCatalogoGateway();
-        public IFreteGateway CriarFreteGateway();
-    }
+	public interface IGatewayFactory
+	{
+		public ICatalogoGateway CriarCatalogoGateway();
+		public IFreteGateway CriarFreteGateway();
+		public IEstoqueGateway CriarEstoqueGateway();
+	}
 }

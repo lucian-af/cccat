@@ -12,6 +12,7 @@ namespace Cccat.Checkout.Application.UseCase
 		private readonly IPedidoRepository _pedidoRepository;
 		private readonly ICatalogoGateway _catalogoGateway;
 		private readonly IFreteGateway _freteGateway;
+		private readonly IEstoqueGateway _estoqueGateway;
 
 		public Checkout(IRepositoryFactory repositoryFactory, IGatewayFactory gatewayFactory)
 		{
@@ -19,6 +20,7 @@ namespace Cccat.Checkout.Application.UseCase
 			_pedidoRepository = repositoryFactory.CriarPedidoRepository();
 			_catalogoGateway = gatewayFactory.CriarCatalogoGateway();
 			_freteGateway = gatewayFactory.CriarFreteGateway();
+			_estoqueGateway = gatewayFactory.CriarEstoqueGateway();
 		}
 
 		public async Task<CheckoutOutputDto> Executar(CheckoutInputDto input)
@@ -33,6 +35,7 @@ namespace Cccat.Checkout.Application.UseCase
 				CepDestino = input.CepDestino,
 			};
 
+			var estoque = new BaixaEstoqueDto();
 			foreach (var item in input.Items)
 			{
 				var produto = await _catalogoGateway.ConsultarProduto(item.IdProduto);
@@ -43,6 +46,8 @@ namespace Cccat.Checkout.Application.UseCase
 					Volume = produto.Volume,
 					Quantidade = item.Quantidade
 				});
+
+				estoque.Itens.Add(new BaixaEstoqueItemDto { IdProduto = item.IdProduto, Quantidade = item.Quantidade });
 			}
 
 			if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
@@ -60,6 +65,8 @@ namespace Cccat.Checkout.Application.UseCase
 			}
 
 			await _pedidoRepository.AdicionarPedido(pedido);
+
+			await _estoqueGateway.BaixarEstoque(estoque);
 
 			return new CheckoutOutputDto
 			{

@@ -19,18 +19,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDatabaseConfiguration(Environment.GetEnvironmentVariable("Conexao"));
 builder.Services.AddScoped<UseCaseFactory>();
 builder.Services.AddScoped<AutenticacaoHandler>();
+builder.Services.AddScoped<HttpClientFactory>();
 builder.Services.AddScoped<ICupomRepository, CupomRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IRepositoryFactory, RepositoryFactory>();
 builder.Services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
 builder.Services.AddScoped<IFreteGateway, FreteHttpGateway>();
 builder.Services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
+builder.Services.AddScoped<IEstoqueGateway, EstoqueHttpGateway>();
 builder.Services.AddScoped<AutenticacaoHttpGateway>();
 
 var urlSettings = new UrlSettings();
 builder.Configuration.GetSection(nameof(UrlSettings)).Bind(urlSettings);
 
 // Clients
+builder.Services
+	.AddRefitClient<IAutenticacaoHttpClient>()
+	.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri(urlSettings.APIAutenticacao));
+
 builder.Services
 	.AddRefitClient<IFreteHttpClient>()
 	.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri(urlSettings.APIFrete))
@@ -42,8 +48,9 @@ builder.Services
 	.AddHttpMessageHandler<AutenticacaoHandler>();
 
 builder.Services
-	.AddRefitClient<IAutenticacaoHttpClient>()
-	.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri(urlSettings.APIAutenticacao));
+	.AddRefitClient<IEstoqueHttpClient>()
+	.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri(urlSettings.APIEstoque))
+	.AddHttpMessageHandler<AutenticacaoHandler>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

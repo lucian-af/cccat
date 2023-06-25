@@ -5,5 +5,6 @@
 		public string APIFrete { get; set; }
 		public string APICatalogo { get; set; }
 		public string APIAutenticacao { get; set; }
+		public string APIEstoque { get; set; }
 	}
 }

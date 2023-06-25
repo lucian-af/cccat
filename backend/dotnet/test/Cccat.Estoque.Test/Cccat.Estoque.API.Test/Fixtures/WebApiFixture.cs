@@ -12,7 +12,11 @@
 		{
 			_factory = new CustomWebApiFactory<Program>();
 			Client = _factory.CreateClient();
+			AdicionaAutorizacao();
 		}
+
+		private void AdicionaAutorizacao()
+			=> Client.DefaultRequestHeaders.Authorization = new("Bearer", _factory.GerarToken());
 
 		public Task LimparBase()
 			=> _factory.LimparBase();

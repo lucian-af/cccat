@@ -29,14 +29,14 @@ namespace Cccat.Checkout.Tests.Fixtures
 			var config = CriarConfiguracao();
 
 			var services = new ServiceCollection();
+			services.AddScoped<AutenticacaoHttpGateway>();
+			services.AddScoped(typeof(AutenticacaoHandler), c
+				=> new AutenticacaoHandler(c.GetRequiredService<AutenticacaoHttpGateway>(), config));
+			services.AddScoped<HttpClientFactory>();
 			services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
 			services.AddScoped<IFreteGateway, FreteHttpGateway>();
 			services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
-			services.AddScoped<AutenticacaoHttpGateway>();
-			services.AddScoped(typeof(AutenticacaoHandler), c =>
-			{
-				return new AutenticacaoHandler(c.GetRequiredService<AutenticacaoHttpGateway>(), config);
-			});
+			services.AddScoped<IEstoqueGateway, EstoqueHttpGateway>();
 			services
 				.AddRefitClient<IFreteHttpClient>()
 				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5102/api"))
@@ -45,6 +45,11 @@ namespace Cccat.Checkout.Tests.Fixtures
 			services
 				.AddRefitClient<ICatalogoHttpClient>()
 				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5101/api"))
+				.AddHttpMessageHandler<AutenticacaoHandler>();
+
+			services
+				.AddRefitClient<IEstoqueHttpClient>()
+				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5105/api"))
 				.AddHttpMessageHandler<AutenticacaoHandler>();
 
 			services

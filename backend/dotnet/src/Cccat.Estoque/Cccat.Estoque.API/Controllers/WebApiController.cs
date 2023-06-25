@@ -1,12 +1,15 @@
 using Cccat.Estoque.Application.Factories;
 using Cccat.Estoque.Application.Models;
 using Cccat.Estoque.Application.UseCases;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
 	[ApiController]
 	[Route("api")]
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	public class WebApiController : ControllerBase
 	{
 		private readonly BaixaEstoque _baixaEstoque;
