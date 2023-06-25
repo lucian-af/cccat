@@ -12,5 +12,11 @@ namespace Cccat.Estoque.Application.Factories
 
 		public BaixaEstoque CriarBaixaEstoque()
 			=> new(_repositoryFactory);
+
+		public ConsultaEstoque CriarConsultaEstoque()
+			=> new(_repositoryFactory);
+
+		public AdicionaEstoque CriarAdicionaEstoque()
+			=> new(_repositoryFactory);
 	}
 }

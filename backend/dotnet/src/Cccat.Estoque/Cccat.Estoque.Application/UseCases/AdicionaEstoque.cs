@@ -5,19 +5,19 @@ using Cccat.Estoque.Domain.Interfaces;
 
 namespace Cccat.Estoque.Application.UseCases
 {
-	public class BaixaEstoque
+	public class AdicionaEstoque
 	{
 		private readonly IFluxoEstoqueRepository _fluxoEstoqueRepository;
 
-		public BaixaEstoque(IRepositoryFactory factory)
+		public AdicionaEstoque(IRepositoryFactory factory)
 			=> _fluxoEstoqueRepository = factory.CriarFluxoEstoqueRepository();
 
-		public async Task Baixar(BaixaEstoqueInputDto input)
+		public async Task Adicionar(AdicionaEstoqueInputDto input)
 		{
 			var fluxosEstoque = new List<FluxoEstoque>();
 			foreach (var item in input.Itens)
 			{
-				var fluxoEstoque = new FluxoEstoque(item.IdProduto, TipoOperacao.Saida, item.Quantidade);
+				var fluxoEstoque = new FluxoEstoque(item.IdProduto, TipoOperacao.Entrada, item.Quantidade);
 				fluxosEstoque.Add(fluxoEstoque);
 			}
 			if (!fluxosEstoque.Any())

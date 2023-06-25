@@ -13,5 +13,8 @@
 			_factory = new CustomWebApiFactory<Program>();
 			Client = _factory.CreateClient();
 		}
+
+		public Task LimparBase()
+			=> _factory.LimparBase();
 	}
 }
