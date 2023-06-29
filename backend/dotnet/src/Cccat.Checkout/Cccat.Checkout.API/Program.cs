@@ -3,13 +3,16 @@ using Cccat.Checkout.API.Helpers;
 using Cccat.Checkout.API.Settings;
 using Cccat.Checkout.Application.Factories;
 using Cccat.Checkout.Application.Gateways;
+using Cccat.Checkout.Application.Queue;
 using Cccat.Checkout.Domain.Interfaces;
 using Cccat.Checkout.Infra.Configurations;
 using Cccat.Checkout.Infra.Factories;
 using Cccat.Checkout.Infra.Gateways;
 using Cccat.Checkout.Infra.Handlers;
 using Cccat.Checkout.Infra.HttpClients;
+using Cccat.Checkout.Infra.Queue;
 using Cccat.Checkout.Infra.Repositories;
+using Cccat.Checkout.Infra.Settings;
 using Microsoft.OpenApi.Models;
 using Refit;
 
@@ -27,7 +30,9 @@ builder.Services.AddScoped<IGatewayFactory, GatewayHttpFactory>();
 builder.Services.AddScoped<IFreteGateway, FreteHttpGateway>();
 builder.Services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
 builder.Services.AddScoped<IEstoqueGateway, EstoqueHttpGateway>();
+builder.Services.AddScoped<IQueue, RabbitMqAdapter>();
 builder.Services.AddScoped<AutenticacaoHttpGateway>();
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection(nameof(RabbitMqSettings)));
 
 var urlSettings = new UrlSettings();
 builder.Configuration.GetSection(nameof(UrlSettings)).Bind(urlSettings);

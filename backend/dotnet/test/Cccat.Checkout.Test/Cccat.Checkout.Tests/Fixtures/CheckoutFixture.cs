@@ -1,10 +1,13 @@
 ﻿using Cccat.Checkout.Application.Factories;
 using Cccat.Checkout.Application.Gateways;
 using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Application.Queue;
 using Cccat.Checkout.Infra.Factories;
 using Cccat.Checkout.Infra.Gateways;
 using Cccat.Checkout.Infra.Handlers;
 using Cccat.Checkout.Infra.HttpClients;
+using Cccat.Checkout.Infra.Queue;
+using Cccat.Checkout.Infra.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
@@ -37,6 +40,8 @@ namespace Cccat.Checkout.Tests.Fixtures
 			services.AddScoped<IFreteGateway, FreteHttpGateway>();
 			services.AddScoped<ICatalogoGateway, CatalogoHttpGateway>();
 			services.AddScoped<IEstoqueGateway, EstoqueHttpGateway>();
+			services.AddScoped<IQueue, RabbitMqAdapter>();
+			services.Configure<RabbitMqSettings>(config.GetSection(nameof(RabbitMqSettings)));
 			services
 				.AddRefitClient<IFreteHttpClient>()
 				.ConfigureHttpClient(cfg => cfg.BaseAddress = new Uri("http://localhost:5102/api"))
@@ -63,7 +68,11 @@ namespace Cccat.Checkout.Tests.Fixtures
 			var inMemorySettings = new Dictionary<string, string> {
 				{"Token", "<um-super-segredo>"},
 				{"UserSettings:Email", "cccat@cccat.com"},
-				{"UserSettings:Senha", "c!c@c#@t"}
+				{"UserSettings:Senha", "c!c@c#@t"},
+				{"RabbitMqSettings:HostName", "localhost" },
+				{"RabbitMqSettings:UserName", "guest" },
+				{"RabbitMqSettings:Password", "guest"},
+				{"RabbitMqSettings:Exchange", "CCCAT-EX"}
 			};
 
 			IConfiguration config = new ConfigurationBuilder().AddInMemoryCollection(inMemorySettings).Build();

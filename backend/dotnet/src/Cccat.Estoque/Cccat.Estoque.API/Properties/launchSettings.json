@@ -9,15 +9,8 @@
         "Conexao": "Server=localhost,1433;Database=CCCAT_Estoque;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
       },
       "dotnetRunMessages": true,
-      "useSSL": true,
-      "applicationUrl": "https://localhost:5005"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": false,
+      "applicationUrl": "http://localhost:5005"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json"

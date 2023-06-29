@@ -2,7 +2,7 @@
 {
 	public class BaixaEstoqueInputDto
 	{
-		public List<BaixaEstoqueItemInputDto> Itens { get; set; }
+		public List<BaixaEstoqueItemInputDto> Itens { get; set; } = new();
 	}
 
 	public class BaixaEstoqueItemInputDto

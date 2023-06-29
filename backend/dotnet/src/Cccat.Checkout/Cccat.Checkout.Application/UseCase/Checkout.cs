@@ -1,6 +1,8 @@
-﻿using Cccat.Checkout.Application.Factories;
+﻿using Cccat.Checkout.Application.Events;
+using Cccat.Checkout.Application.Factories;
 using Cccat.Checkout.Application.Gateways;
 using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Application.Queue;
 using Cccat.Checkout.Domain.Entities;
 using Cccat.Checkout.Domain.Interfaces;
 
@@ -12,15 +14,15 @@ namespace Cccat.Checkout.Application.UseCase
 		private readonly IPedidoRepository _pedidoRepository;
 		private readonly ICatalogoGateway _catalogoGateway;
 		private readonly IFreteGateway _freteGateway;
-		private readonly IEstoqueGateway _estoqueGateway;
+		private readonly IQueue _queue;
 
-		public Checkout(IRepositoryFactory repositoryFactory, IGatewayFactory gatewayFactory)
+		public Checkout(IRepositoryFactory repositoryFactory, IGatewayFactory gatewayFactory, IQueue queue)
 		{
 			_cupomRepository = repositoryFactory.CriarCupomRepository();
 			_pedidoRepository = repositoryFactory.CriarPedidoRepository();
 			_catalogoGateway = gatewayFactory.CriarCatalogoGateway();
 			_freteGateway = gatewayFactory.CriarFreteGateway();
-			_estoqueGateway = gatewayFactory.CriarEstoqueGateway();
+			_queue = queue;
 		}
 
 		public async Task<CheckoutOutputDto> Executar(CheckoutInputDto input)
@@ -35,7 +37,7 @@ namespace Cccat.Checkout.Application.UseCase
 				CepDestino = input.CepDestino,
 			};
 
-			var estoque = new BaixaEstoqueDto();
+			var pedidoRealizadoEvent = new PedidoRealizadoEvent();
 			foreach (var item in input.Items)
 			{
 				var produto = await _catalogoGateway.ConsultarProduto(item.IdProduto);
@@ -47,7 +49,7 @@ namespace Cccat.Checkout.Application.UseCase
 					Quantidade = item.Quantidade
 				});
 
-				estoque.Itens.Add(new BaixaEstoqueItemDto { IdProduto = item.IdProduto, Quantidade = item.Quantidade });
+				pedidoRealizadoEvent.Itens.Add(new() { IdProduto = item.IdProduto, Quantidade = item.Quantidade });
 			}
 
 			if (!string.IsNullOrWhiteSpace(input.CepOrigem) && !string.IsNullOrWhiteSpace(input.CepDestino))
@@ -66,7 +68,7 @@ namespace Cccat.Checkout.Application.UseCase
 
 			await _pedidoRepository.AdicionarPedido(pedido);
 
-			await _estoqueGateway.BaixarEstoque(estoque);
+			_queue.Publicar("pedidoRealizado", pedidoRealizadoEvent);
 
 			return new CheckoutOutputDto
 			{

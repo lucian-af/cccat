@@ -1,6 +1,8 @@
 ﻿using Cccat.Checkout.Application.Models;
+using Cccat.Checkout.Application.Queue;
 using Cccat.Checkout.Infra.Factories;
 using Cccat.Checkout.Tests.Fixtures;
+using Microsoft.Extensions.DependencyInjection;
 using US = Cccat.Checkout.Application.UseCase;
 
 namespace Cccat.Checkout.Tests.UseCases
@@ -19,7 +21,8 @@ namespace Cccat.Checkout.Tests.UseCases
 			var factory = _databaseRepositoryFactory.CriarRepositoryFactory();
 			_checkoutFixture = new();
 			var gatewayFactory = new GatewayHttpFactory(_checkoutFixture.ServiceProvider);
-			_checkout = new US.Checkout(factory, gatewayFactory);
+			var queue = _checkoutFixture.ServiceProvider.GetRequiredService<IQueue>();
+			_checkout = new US.Checkout(factory, gatewayFactory, queue);
 			_consultarPedido = new US.ConsultaPedido(factory);
 		}
 

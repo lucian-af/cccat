@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Cccat.Estoque.BackgroundTask.Settings;
 using Cccat.Estoque.Infra.Configurations;
 using Cccat.Estoque.Infra.Database;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +42,7 @@ namespace Cccat.Estoque.API.Test.Fixtures
 
 				var conn = Environment.GetEnvironmentVariable("Conexao");
 				services.AddDatabaseConfiguration(conn);
+				services.Configure<RabbitMqSettings>(configuration.GetSection(nameof(RabbitMqSettings)));
 			});
 
 			builder.UseEnvironment("Staging");

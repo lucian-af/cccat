@@ -95,6 +95,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Estoque.API.Test", "t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Estoque.Tests", "test\Cccat.Estoque.Test\Cccat.Estoque.Test\Cccat.Estoque.Tests.csproj", "{AC569EC0-9699-4300-AFA3-C5C68A0B335A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cccat.Estoque.BackgroundTask", "src\Cccat.Estoque\Cccat.Estoque.BackgroundTask\Cccat.Estoque.BackgroundTask.csproj", "{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -229,6 +231,10 @@ Global
 		{AC569EC0-9699-4300-AFA3-C5C68A0B335A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC569EC0-9699-4300-AFA3-C5C68A0B335A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC569EC0-9699-4300-AFA3-C5C68A0B335A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -271,6 +277,7 @@ Global
 		{7581D881-4073-46CD-8AF2-B9066CCD4AA1} = {4906A40B-B218-49E6-B70E-0AC6029E85FF}
 		{85302094-D19C-4E89-8472-184DCB73809B} = {F23B7E81-A483-423E-9EB1-90989B025A7D}
 		{AC569EC0-9699-4300-AFA3-C5C68A0B335A} = {F23B7E81-A483-423E-9EB1-90989B025A7D}
+		{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF} = {4906A40B-B218-49E6-B70E-0AC6029E85FF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5516D456-3AFE-4B04-8045-F72FFE805581}

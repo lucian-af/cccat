@@ -1,5 +1,5 @@
 ﻿using Cccat.Checkout.Application.Gateways;
-using Cccat.Checkout.Domain.Entities;
+using Cccat.Checkout.Application.Models;
 using Cccat.Checkout.Infra.Factories;
 using Cccat.Checkout.Infra.HttpClients;
 

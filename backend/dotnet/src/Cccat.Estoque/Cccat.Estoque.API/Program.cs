@@ -1,6 +1,9 @@
 using API.Helpers;
 using Cccat.Estoque.API.Configurations;
 using Cccat.Estoque.Application.Factories;
+using Cccat.Estoque.BackgroundTask;
+using Cccat.Estoque.BackgroundTask.Queue;
+using Cccat.Estoque.BackgroundTask.Settings;
 using Cccat.Estoque.Domain.Interfaces;
 using Cccat.Estoque.Infra.Configurations;
 using Cccat.Estoque.Infra.Factories;
@@ -44,6 +47,9 @@ builder.Services.AddSwaggerGen(c =>
 				});
 });
 builder.Services.AddAutenticacao(builder.Configuration);
+builder.Services.AddScoped<IQueue, RabbitMqAdapter>();
+builder.Services.AddHostedService<ProcessaEstoqueService>();
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection(nameof(RabbitMqSettings)));
 
 var app = builder.Build();
 

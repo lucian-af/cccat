@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cccat.Estoque.Application\Cccat.Estoque.Application.csproj" />
+    <ProjectReference Include="..\Cccat.Estoque.BackgroundTask\Cccat.Estoque.BackgroundTask.csproj" />
     <ProjectReference Include="..\Cccat.Estoque.Domain\Cccat.Estoque.Domain.csproj" />
     <ProjectReference Include="..\Cccat.Estoque.Infra\Cccat.Estoque.Infra.csproj" />
   </ItemGroup>

@@ -12,6 +12,7 @@ WORKDIR /src
 COPY ["src/Cccat.Estoque/Cccat.Estoque.API/Cccat.Estoque.API.csproj", "src/Cccat.Estoque/Cccat.Estoque.API/"]
 COPY ["src/Cccat.Estoque/Cccat.Estoque.Application/Cccat.Estoque.Application.csproj", "src/Cccat.Estoque/Cccat.Estoque.Application/"]
 COPY ["src/Cccat.Estoque/Cccat.Estoque.Domain/Cccat.Estoque.Domain.csproj", "src/Cccat.Estoque/Cccat.Estoque.Domain/"]
+COPY ["src/Cccat.Estoque/Cccat.Estoque.BackgroundTask/Cccat.Estoque.BackgroundTask.csproj", "src/Cccat.Estoque/Cccat.Estoque.BackgroundTask/"]
 COPY ["src/Cccat.Estoque/Cccat.Estoque.Infra/Cccat.Estoque.Infra.csproj", "src/Cccat.Estoque/Cccat.Estoque.Infra/"]
 RUN dotnet restore "src/Cccat.Estoque/Cccat.Estoque.API/Cccat.Estoque.API.csproj"
 COPY . .
