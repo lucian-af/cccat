@@ -3,7 +3,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 
-ENV Conexao="Server=172.23.0.100,1433;Database=CCCAT_Estoque;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
+ENV Conexao="Server=mssql,1433;Database=CCCAT_Estoque;User ID=sa;Password=Secret@1234;TrustServerCertificate=true;"
 ENV ASPNETCORE_URLS=http://+:5105
 EXPOSE 5105
 

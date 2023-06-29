@@ -1,0 +1,39 @@
+version: '3'
+
+networks:
+  net_padrao:
+    name: net_padrao
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql-2017
+    networks:
+      - net_padrao
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_PID: Standard
+      SA_PASSWORD: Secret@1234
+      MSSQL_AGENT_ENABLED: "true"
+    volumes: 
+      - ./backups:/backups
+    hostname: mssql
+
+  rabbitmq:    
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
+    hostname: "rabbitmq"
+    networks:
+      - net_padrao
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"    
