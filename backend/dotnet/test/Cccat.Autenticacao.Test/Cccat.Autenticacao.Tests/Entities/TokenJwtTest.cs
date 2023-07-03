@@ -49,8 +49,8 @@ public class TokenJwtTest
 	[Fact]
 	public async Task DeveRetornarFalsoSeTokenExpirado()
 	{
-		var token = TokenJwt.Gerar(DateTime.Now.AddSeconds(10));
-		await Task.Delay(TimeSpan.FromSeconds(11));
+		var token = TokenJwt.Gerar(DateTime.Now.AddSeconds(2));
+		await Task.Delay(TimeSpan.FromSeconds(3));
 		Assert.False(TokenJwt.Validar(token));
 	}
 }

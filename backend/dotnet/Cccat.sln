@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Queue.Producer", "src\Cccat.Queue.Producer\Cccat.Queue.Producer.csproj", "{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queues", "queues", "{4BA1678B-FDF9-4868-89CC-849D11F74299}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Queue.Consumer", "src\Cccat.Queue.Consumer\Cccat.Queue.Consumer.csproj", "{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{E7099DAD-03BB-4086-B5E9-996668CE4FEE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Checkout", "Checkout", "{C5DBE417-77AF-44E1-9781-751742C12C69}"
@@ -95,7 +89,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Estoque.API.Test", "t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Estoque.Tests", "test\Cccat.Estoque.Test\Cccat.Estoque.Test\Cccat.Estoque.Tests.csproj", "{AC569EC0-9699-4300-AFA3-C5C68A0B335A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cccat.Estoque.BackgroundTask", "src\Cccat.Estoque\Cccat.Estoque.BackgroundTask\Cccat.Estoque.BackgroundTask.csproj", "{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cccat.Estoque.BackgroundTask", "src\Cccat.Estoque\Cccat.Estoque.BackgroundTask\Cccat.Estoque.BackgroundTask.csproj", "{A6C392FC-3A8D-4AF4-8CFF-1116BA4469DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,14 +97,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEE462C7-5714-44F2-A2A3-38FF2A852138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEE462C7-5714-44F2-A2A3-38FF2A852138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE462C7-5714-44F2-A2A3-38FF2A852138}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -240,8 +226,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4E13095E-B188-42FC-AAD5-2BD3AF3CA17D} = {4BA1678B-FDF9-4868-89CC-849D11F74299}
-		{2FCB71FB-3B28-4BC5-A5E0-9E91A3B26C05} = {4BA1678B-FDF9-4868-89CC-849D11F74299}
 		{EEE462C7-5714-44F2-A2A3-38FF2A852138} = {E7099DAD-03BB-4086-B5E9-996668CE4FEE}
 		{691338F3-D718-42DF-BF37-504D5B4B63EC} = {E7099DAD-03BB-4086-B5E9-996668CE4FEE}
 		{CF332404-7899-4566-8A84-F1CFCF4C8305} = {E7099DAD-03BB-4086-B5E9-996668CE4FEE}
