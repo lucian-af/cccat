@@ -12,8 +12,8 @@ Clean Code e Clean Architecture - Branas.io
 - Exemplos de uso e aplicação do Clean Code;
 - Exemplo de projeto com Clean Architecture:
   - Aplicação e uso correto de OOP:
-    - entidades com comportamentos claros e objetivos e **testados**;
+    - entidades com comportamentos claros, objetivos e **testados**;
   - Responsabilidades desacopladas;
 - Uso de arquitetura hexagonal;
 - DDD - Domain Driven Design;
-- e Testes, muitos testes, unitários e de integração;
+- Testes unitários e de integração;
